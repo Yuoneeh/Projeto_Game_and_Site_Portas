@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://h16gyic78rsi"]
+
+[ext_resource type="Script" uid="uid://bme7pby743ppw" path="res://scripts/sfxs.gd" id="1_12rng"]
+[ext_resource type="AudioStream" uid="uid://beqcvv7seks8g" path="res://assets/sfx/old_pc_click.wav" id="1_ibuxe"]
+
+[node name="sfxs" type="Node2D"]
+script = ExtResource("1_12rng")
+
+[node name="OldPcClick" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(122, 144)
+stream = ExtResource("1_ibuxe")

@@ -1,0 +1,21 @@
+Tipos de blocos-
+
+	-Tiles - 1
+	-Walls - 2
+	-Boxes - 3
+	-Buttons - 4
+	-Open Doors - 5
+	-Closed Doors - 6
+	-Levers - 7
+
+-Seguinte, no momento há duas formas de fazer a colisão com objetos interagiveis:
+	-Por meio do Tilemap
+		-Necessário realizar códigos bem mais complexos 
+	-Por meio de objetos detectados pelo Raycast
+		-Mais simples mas mais banana
+
+
+Sobre a movimentação dos cubos ao analisar a dinamica entre a movimentação do player e a mecânica de empurrar objetos concluisse que:
+	-O personagem pode se mover juntamente ao cubo carregando-o
+	-O Cubo pode se teleportar para a casa contraria a direção do empurrão
+	-O Personagem pode realizar um peteleco com uma mão comicamente grande/realista de até 3 forças que empurra o cubo / interage com o objeto

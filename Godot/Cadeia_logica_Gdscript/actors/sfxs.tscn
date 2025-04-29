@@ -1,6 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://h16gyic78rsi"]
 
 [ext_resource type="Script" uid="uid://bme7pby743ppw" path="res://scripts/sfxs.gd" id="1_12rng"]
+[ext_resource type="Script" uid="uid://b6s4a4fmhsgep" path="res://scripts/sfxs.gd" id="1_12rng"]
 [ext_resource type="AudioStream" uid="uid://beqcvv7seks8g" path="res://assets/sfx/old_pc_click.wav" id="1_ibuxe"]
 
 [node name="sfxs" type="Node2D"]

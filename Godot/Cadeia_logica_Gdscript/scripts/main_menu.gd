@@ -7,6 +7,7 @@ signal timeout_sfx
 @onready var btn_credits = $Control/btn_credits
 @onready var btn_levels = $Control/btn_levels
 @onready var audio_timer = $timer_sfx
+
 func _process(delta: float) -> void:
 	anim.play("logo")
 	button_hover()
@@ -56,7 +57,7 @@ func _on_btn_play_pressed() -> void:
 	audio_timer.start()
 	timeout_sfx.connect(start_game)
 	audio_timer.stop()
-	
+	start_game()
 
 func start_game():
 	get_tree().change_scene_to_file("res://scenes/teste.tscn")

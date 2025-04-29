@@ -1,34 +1,119 @@
 extends CharacterBody2D
+signal move_right
+signal move_down
+signal move_up
+signal move_left
 @onready var ray = $collision_detector
 @onready var tile_interactions = $"../interaction_grid"
 @onready var tile_boxes = $"../interactables"
+@onready var ray_interactables = $interactables_ray
+@onready var flick_hand = $hand_flick
 var animation_speed = 3
 var tile_size = 64
 var dir
+var socavel = false
 var moving = false
 func _ready() -> void:
+	flick_hand.visible = false
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
 func _process(delta: float) -> void:
+	ray_interactables.force_raycast_update()
 	#tile_data_stuff()
 	if moving == false:
 		if Input.is_action_just_pressed("walk_left"):
 			dir = Vector2.LEFT
+			push_stuff()
 			print("Left")
 			move(dir)
 		if Input.is_action_just_pressed("walk_right"):
 			dir = Vector2.RIGHT
+			push_stuff()
 			print("Right")
 			move(dir)
+			
 		if Input.is_action_just_pressed("walk_up"):
 			dir = Vector2.UP
+			push_stuff()
 			print("Up")
 			move(dir)
+			
 		if Input.is_action_just_pressed("walk_down"):
 			dir = Vector2.DOWN
+			push_stuff()
 			print("Down")
 			move(dir)
-		push_stuff()
+			
+	if moving == false && socavel == true:
+		#Push Right
+		if Input.is_action_pressed("action_02") && dir == Vector2.RIGHT:
+			print("Quero empurrar este objeto")
+			flick_hand.flip_h = true
+			flick_hand.flip_v = false
+			flick_hand.position.x = 55.0
+			flick_hand.position.y = 1
+			flick_hand.rotation = 0
+			flick_hand.visible = true
+			
+			dir == Vector2.RIGHT
+			ray_interactables.force_raycast_update()
+		if Input.is_action_just_released("action_02") && dir == Vector2.RIGHT:
+			flick_hand.visible = false
+			move_right.emit()
+			dir == Vector2.RIGHT
+			ray_interactables.force_raycast_update()
+			socavel = false
+		#Push Down
+		if Input.is_action_pressed("action_02") && dir == Vector2.DOWN:
+			print("Quero empurrar este objeto")
+			flick_hand.position.x = 6.0
+			flick_hand.position.y = 43
+			flick_hand.rotation = 90
+			flick_hand.visible = true
+			flick_hand.flip_h = true
+			flick_hand.flip_v = false
+			dir == Vector2.DOWN
+			ray_interactables.force_raycast_update()
+		if Input.is_action_just_released("action_02") && dir == Vector2.DOWN:
+			flick_hand.visible = false
+			move_down.emit()
+			dir == Vector2.DOWN
+			ray_interactables.force_raycast_update()
+			socavel = false
+		##Push UP
+		if Input.is_action_pressed("action_02") && dir == Vector2.UP:
+			print("Quero empurrar este objeto")
+			flick_hand.position.x = 11.0
+			flick_hand.position.y = -31.0
+			flick_hand.rotation = 200
+			flick_hand.visible = true
+			flick_hand.flip_h = true
+			flick_hand.flip_v = false
+			dir == Vector2.UP
+			ray_interactables.force_raycast_update()
+		if Input.is_action_just_released("action_02") && dir == Vector2.UP:
+			flick_hand.visible = false
+			move_up.emit()
+			dir == Vector2.UP
+			ray_interactables.force_raycast_update()
+			socavel = false
+		##Push LEFT
+		if Input.is_action_pressed("action_02") && dir == Vector2.LEFT:
+			print("Quero empurrar este objeto")
+			flick_hand.position.x = -44.0
+			flick_hand.position.y = 4.0
+			flick_hand.rotation = 245
+			flick_hand.visible = true
+			flick_hand.flip_h = false
+			flick_hand.flip_v = false
+			dir == Vector2.LEFT
+			ray_interactables.force_raycast_update()
+		if Input.is_action_just_released("action_02") && dir == Vector2.LEFT:
+			flick_hand.visible = false
+			move_left.emit()
+			dir == Vector2.LEFT
+			ray_interactables.force_raycast_update()
+			socavel = false
 #func tile_data_stuff():
 #	var tile_ tile_interactions.get_cell_tile_data(tile_type):
 	
@@ -45,8 +130,26 @@ func move(dir):
 		moving = true
 		await tween.finished
 		moving = false
+	if ray_interactables.is_colliding():
+		print("Há objetos interagiveis")
+		socavel = true
+	if !ray_interactables.is_colliding():
+		print("Não há objetos interagiveis")
+		socavel = false
+	if ray.is_colliding():
+		if ray_interactables.is_colliding():
+			print("Há objetos interagiveis")
+			socavel = true
+		if !ray_interactables.is_colliding():
+			print("Não há objetos interagiveis")
+			socavel = false
 	
 func push_stuff():
-	#if tile_boxes.get_cell_atlas_coords():
-		#print("Boa maluco")
-	pass
+	ray_interactables.target_position = dir * tile_size
+	ray_interactables.force_raycast_update()
+	#if ray_interactables.is_colliding():
+	#	print("Há objetos interagiveis")
+		#socavel = true
+	#if !ray_interactables.is_colliding():
+		#print("Não há objetos interagiveis")
+	#	socavel = false

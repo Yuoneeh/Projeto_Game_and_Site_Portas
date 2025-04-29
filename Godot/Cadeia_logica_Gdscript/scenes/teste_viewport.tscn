@@ -33,4 +33,4 @@ offset_bottom = 550.0
 texture = ExtResource("1_xn0xu")
 
 [node name="Teste" parent="." instance=ExtResource("1_y8bot")]
-position = Vector2(221, 101)
+position = Vector2(218, 106)

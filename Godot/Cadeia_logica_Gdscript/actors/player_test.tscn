@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce7eo2f7bup5r"]
+[gd_scene load_steps=7 format=3 uid="uid://ce7eo2f7bup5r"]
 
 [ext_resource type="Script" uid="uid://n7iiydd4tyco" path="res://actors/player_test.gd" id="1_bk4e6"]
 [ext_resource type="Texture2D" uid="uid://f6fgxcx3j3qa" path="res://assets/actors/sprite_teste.png" id="2_7w71e"]
+[ext_resource type="Texture2D" uid="uid://buei374rla8hh" path="res://assets/actors/hand_flicking.png" id="3_7w71e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2ri5"]
 radius = 26.1725
@@ -31,6 +32,7 @@ script = ExtResource("1_bk4e6")
 
 [node name="base_colision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p2ri5")
+disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -10)
@@ -38,5 +40,16 @@ sprite_frames = SubResource("SpriteFrames_yknti")
 animation = &"default_teste"
 
 [node name="collision_detector" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(0, 64)
 collide_with_areas = true
+
+[node name="interactables_ray" type="RayCast2D" parent="."]
+collision_mask = 2
+
+[node name="hand_flick" type="Sprite2D" parent="."]
+position = Vector2(12, -31)
+scale = Vector2(0.138683, 0.148611)
+texture = ExtResource("3_7w71e")
+flip_h = true
+flip_v = true

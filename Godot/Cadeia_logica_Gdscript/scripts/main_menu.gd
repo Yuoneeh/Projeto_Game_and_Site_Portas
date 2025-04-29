@@ -42,7 +42,7 @@ func button_hover():
 
 
 func _on_btn_quit_pressed() -> void:
-	$sfx/OldPcClick.play()
+	$OldPcClick.play()
 	audio_timer.start()
 	timeout_sfx.connect(get_tree().quit)
 	
@@ -54,7 +54,7 @@ func _on_timer_sfx_timeout() -> void:
 
 
 func _on_btn_play_pressed() -> void:
-	$sfx/OldPcClick.play()
+	$OldPcClick.play()
 	audio_timer.start()
 	timeout_sfx.connect(start_game)
 	audio_timer.stop()
@@ -65,7 +65,7 @@ func start_game():
 
 
 func _on_btn_credits_pressed() -> void:
-	$sfx/OldPcClick.play()
+	$OldPcClick.play()
 	audio_timer.start()
 	print("repetiu")
 	timeout_sfx.connect(open_website)

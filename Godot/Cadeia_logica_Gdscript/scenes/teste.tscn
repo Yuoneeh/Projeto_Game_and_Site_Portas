@@ -84,13 +84,15 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAA
 tile_set = ExtResource("1_kta4m")
 metadata/_edit_lock_ = true
 
-[node name="Player_test" parent="." instance=ExtResource("2_2gqm3")]
-position = Vector2(96, 95)
-collision_layer = 2
-collision_mask = 2
-
 [node name="Cube" parent="." instance=ExtResource("5_8cswh")]
 position = Vector2(222, 158)
 
-[node name="Cube2" parent="." instance=ExtResource("5_8cswh")]
-position = Vector2(224, 284)
+[node name="Player_test" parent="." instance=ExtResource("2_2gqm3")]
+position = Vector2(289, 160)
+collision_layer = 2
+collision_mask = 2
+
+[connection signal="move_down" from="Player_test" to="Cube" method="_on_player_test_move_down"]
+[connection signal="move_left" from="Player_test" to="Cube" method="_on_player_test_move_left"]
+[connection signal="move_right" from="Player_test" to="Cube" method="_on_player_test_move_right"]
+[connection signal="move_up" from="Player_test" to="Cube" method="_on_player_test_move_up"]

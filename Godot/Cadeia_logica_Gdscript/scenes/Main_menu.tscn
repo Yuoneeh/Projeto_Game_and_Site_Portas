@@ -190,9 +190,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_tpbep")
 }
 
-[node name="sfx" type="Node2D" parent="."]
-
-[node name="OldPcClick" type="AudioStreamPlayer" parent="sfx"]
+[node name="OldPcClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_qtdab")
 
 [node name="timer_sfx" type="Timer" parent="."]

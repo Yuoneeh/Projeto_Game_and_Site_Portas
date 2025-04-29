@@ -178,6 +178,7 @@ offset_bottom = 541.0
 texture_normal = SubResource("AtlasTexture_xkoo8")
 
 [node name="LinkButton" type="LinkButton" parent="Control/btn_credits"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

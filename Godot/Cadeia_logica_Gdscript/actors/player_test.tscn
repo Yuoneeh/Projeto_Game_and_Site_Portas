@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dky3tf7xp8uqx"]
+[gd_scene load_steps=6 format=3 uid="uid://ce7eo2f7bup5r"]
 
-[ext_resource type="Script" path="res://actors/player_test.gd" id="1_bk4e6"]
+[ext_resource type="Script" uid="uid://n7iiydd4tyco" path="res://actors/player_test.gd" id="1_bk4e6"]
 [ext_resource type="Texture2D" uid="uid://f6fgxcx3j3qa" path="res://assets/actors/sprite_teste.png" id="2_7w71e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2ri5"]

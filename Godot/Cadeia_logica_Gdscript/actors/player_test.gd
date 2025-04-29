@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var ray = $collision_detector
 
 var tile_size = 64
 var dir
@@ -26,6 +27,9 @@ func _process(delta: float) -> void:
 		move(dir)
 
 func move(dir):
-	position += dir * tile_size
+	ray.target_position = dir * tile_size
+	ray.force_raycast_update()
+	if !ray.is_colliding():
+		position += dir * tile_size
 	
 	

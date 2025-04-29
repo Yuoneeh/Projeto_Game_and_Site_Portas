@@ -40,4 +40,3 @@ animation = &"default_teste"
 [node name="collision_detector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 64)
 collide_with_areas = true
-collide_with_bodies = false

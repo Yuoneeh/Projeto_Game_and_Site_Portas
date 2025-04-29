@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Sfxs="*res://scripts/sfxs.gd"
 
+[display]
+
+window/size/mode=3
+
 [input]
 
 walk_left={

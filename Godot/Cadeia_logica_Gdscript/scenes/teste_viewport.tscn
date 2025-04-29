@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://cqbkfhr2n3gph"]
+[gd_scene load_steps=2 format=3 uid="uid://cqbkfhr2n3gph"]
+
+[ext_resource type="PackedScene" uid="uid://dh5olsaf2g3np" path="res://scenes/teste.tscn" id="1_y8bot"]
 
 [node name="teste_viewport" type="Node2D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Teste" parent="SubViewport" instance=ExtResource("1_y8bot")]

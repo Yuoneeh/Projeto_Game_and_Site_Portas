@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dky3tf7xp8uqx"]
+
+[ext_resource type="Script" path="res://actors/player_test.gd" id="1_bk4e6"]
+[ext_resource type="Texture2D" uid="uid://f6fgxcx3j3qa" path="res://assets/actors/sprite_teste.png" id="2_7w71e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2ri5"]
+radius = 26.1725
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50q57"]
+atlas = ExtResource("2_7w71e")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yknti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50q57")
+}],
+"loop": true,
+"name": &"default_teste",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Player_test" type="CharacterBody2D"]
+script = ExtResource("1_bk4e6")
+
+[node name="base_colision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p2ri5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -10)
+sprite_frames = SubResource("SpriteFrames_yknti")
+animation = &"default_teste"
+
+[node name="collision_detector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 64)
+collide_with_areas = true
+collide_with_bodies = false

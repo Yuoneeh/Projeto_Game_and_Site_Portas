@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cc13e3o40cveo"]
 
-[ext_resource type="Script" uid="uid://cio6wjckw08ao" path="res://actors/cube.gd" id="1_fqpox"]
-[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/game/Tile_set1.png" id="1_wgndh"]
+[ext_resource type="Script" uid="uid://cio6wjckw08ao" path="res://scenes/obstaculos/cube.gd" id="1_fqpox"]
+[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="1_wgndh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jwrs"]
 size = Vector2(57.5, 57.5)
@@ -19,5 +19,5 @@ script = ExtResource("1_fqpox")
 position = Vector2(0.25, 2.25)
 shape = SubResource("RectangleShape2D_4jwrs")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["cubos"]]
 texture = SubResource("AtlasTexture_fqpox")

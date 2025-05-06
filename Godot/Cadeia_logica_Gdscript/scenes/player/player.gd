@@ -13,6 +13,7 @@ var tile_size = 64
 var dir
 var socavel = false
 var moving = false
+
 func _ready() -> void:
 	flick_hand.visible = false
 	position = position.snapped(Vector2.ONE * tile_size)
@@ -37,7 +38,6 @@ func _process(delta: float) -> void:
 			push_stuff()
 			print("Up")
 			move(dir)
-			
 		if Input.is_action_just_pressed("walk_down"):
 			dir = Vector2.DOWN
 			push_stuff()
@@ -47,7 +47,6 @@ func _process(delta: float) -> void:
 	if moving == false && socavel == true:
 		#Push Right
 		if Input.is_action_pressed("action_02") && dir == Vector2.RIGHT:
-			print("Quero empurrar este objeto")
 			flick_hand.flip_h = true
 			flick_hand.flip_v = false
 			flick_hand.position.x = 55.0
@@ -93,7 +92,8 @@ func _process(delta: float) -> void:
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.UP:
 			flick_hand.visible = false
-			move_up.emit()
+			var cubos = get_tree().get_nodes_in_group("cubos")
+			#cubos
 			dir == Vector2.UP
 			ray_interactables.force_raycast_update()
 			socavel = false
@@ -110,7 +110,7 @@ func _process(delta: float) -> void:
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.LEFT:
 			flick_hand.visible = false
-			move_left.emit()
+			
 			dir == Vector2.LEFT
 			ray_interactables.force_raycast_update()
 			socavel = false

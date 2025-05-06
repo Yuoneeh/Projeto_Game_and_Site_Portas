@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqbkfhr2n3gph"]
 
-[ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://assets/menu/Menu_background.png" id="1_xn0xu"]
-[ext_resource type="PackedScene" uid="uid://dh5olsaf2g3np" path="res://scenes/teste.tscn" id="1_y8bot"]
+[ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="1_1si4u"]
+[ext_resource type="PackedScene" uid="uid://dh5olsaf2g3np" path="res://scenes/main/main.tscn" id="2_7pej6"]
 
-[node name="teste_viewport" type="Node2D"]
+[node name="viewport" type="Node2D"]
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 9.44)
@@ -30,7 +30,7 @@ offset_left = 255.0
 offset_top = 102.0
 offset_right = 895.0
 offset_bottom = 550.0
-texture = ExtResource("1_xn0xu")
+texture = ExtResource("1_1si4u")
 
-[node name="Teste" parent="." instance=ExtResource("1_y8bot")]
+[node name="Teste" parent="." instance=ExtResource("2_7pej6")]
 position = Vector2(218, 106)

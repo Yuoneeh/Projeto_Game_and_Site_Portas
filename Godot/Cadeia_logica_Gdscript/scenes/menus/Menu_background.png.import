@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3tpy5qjey6a0"
-path="res://.godot/imported/Tile_set2.png-81defbbbe78c58eb49cf95e715851296.ctex"
+uid="uid://d3gq3i6scq67o"
+path="res://.godot/imported/Menu_background.png-17e0554a9f082429f0a81b6f02032b42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/Tile_set2.png"
-dest_files=["res://.godot/imported/Tile_set2.png-81defbbbe78c58eb49cf95e715851296.ctex"]
+source_file="res://scenes/menus/Menu_background.png"
+dest_files=["res://.godot/imported/Menu_background.png-17e0554a9f082429f0a81b6f02032b42.ctex"]
 
 [params]
 

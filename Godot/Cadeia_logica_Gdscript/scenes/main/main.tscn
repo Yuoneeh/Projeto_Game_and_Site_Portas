@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://dh5olsaf2g3np"]
+[gd_scene load_steps=11 format=4 uid="uid://dh5olsaf2g3np"]
 
-[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/game/Tile_set1.png" id="1_3r2dd"]
-[ext_resource type="Script" uid="uid://ceocfigh8npdg" path="res://scripts/game_scene.gd" id="1_dp01m"]
-[ext_resource type="TileSet" uid="uid://03bbwqdht020" path="res://assets/Tiles/teste.tres" id="1_kta4m"]
-[ext_resource type="PackedScene" uid="uid://ce7eo2f7bup5r" path="res://actors/player_test.tscn" id="2_2gqm3"]
-[ext_resource type="PackedScene" uid="uid://cc13e3o40cveo" path="res://actors/cube.tscn" id="5_8cswh"]
+[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="1_3r2dd"]
+[ext_resource type="Script" uid="uid://ceocfigh8npdg" path="res://scenes/main/game_scene.gd" id="1_dp01m"]
+[ext_resource type="TileSet" uid="uid://03bbwqdht020" path="res://resources/teste.tres" id="1_kta4m"]
+[ext_resource type="PackedScene" uid="uid://ce7eo2f7bup5r" path="res://scenes/player/player.tscn" id="2_2gqm3"]
+[ext_resource type="PackedScene" uid="uid://cc13e3o40cveo" path="res://scenes/obstaculos/cube.tscn" id="5_8cswh"]
+[ext_resource type="PackedScene" uid="uid://b5rp7io7i1238" path="res://scenes/obstaculos/cube_2.tscn" id="6_ow5a4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dp01m"]
 texture = ExtResource("1_3r2dd")
@@ -62,7 +63,7 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_8cswh")
 
-[node name="Teste" type="Node2D"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_dp01m")
 
 [node name="Visual_assets" type="TileMapLayer" parent="."]
@@ -85,14 +86,10 @@ tile_set = ExtResource("1_kta4m")
 metadata/_edit_lock_ = true
 
 [node name="Cube" parent="." instance=ExtResource("5_8cswh")]
-position = Vector2(222, 158)
+position = Vector2(223, 285)
 
-[node name="Player_test" parent="." instance=ExtResource("2_2gqm3")]
-position = Vector2(289, 160)
-collision_layer = 2
-collision_mask = 2
+[node name="Player" parent="." instance=ExtResource("2_2gqm3")]
+position = Vector2(351, 160)
 
-[connection signal="move_down" from="Player_test" to="Cube" method="_on_player_test_move_down"]
-[connection signal="move_left" from="Player_test" to="Cube" method="_on_player_test_move_left"]
-[connection signal="move_right" from="Player_test" to="Cube" method="_on_player_test_move_right"]
-[connection signal="move_up" from="Player_test" to="Cube" method="_on_player_test_move_up"]
+[node name="Cube2" parent="." instance=ExtResource("6_ow5a4")]
+position = Vector2(479, 223)

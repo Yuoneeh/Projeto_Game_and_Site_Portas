@@ -1,14 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ce7eo2f7bup5r"]
+[gd_scene load_steps=8 format=3 uid="uid://ce7eo2f7bup5r"]
 
-[ext_resource type="Script" uid="uid://n7iiydd4tyco" path="res://actors/player_test.gd" id="1_bk4e6"]
-[ext_resource type="Texture2D" uid="uid://f6fgxcx3j3qa" path="res://assets/actors/sprite_teste.png" id="2_7w71e"]
-[ext_resource type="Texture2D" uid="uid://buei374rla8hh" path="res://assets/actors/hand_flicking.png" id="3_7w71e"]
+[ext_resource type="Script" uid="uid://n7iiydd4tyco" path="res://scenes/player/player.gd" id="1_gmlin"]
+[ext_resource type="Texture2D" uid="uid://f6fgxcx3j3qa" path="res://scenes/player/sprite_teste.png" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://buei374rla8hh" path="res://scenes/player/hand_flicking.png" id="3_p47bc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2ri5"]
 radius = 26.1725
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_50q57"]
-atlas = ExtResource("2_7w71e")
+atlas = ExtResource("2_lvxji")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yknti"]
@@ -27,12 +27,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player_test" type="CharacterBody2D"]
-script = ExtResource("1_bk4e6")
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
+radius = 47.0956
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_gmlin")
 
 [node name="base_colision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p2ri5")
-disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -10)
@@ -50,6 +54,11 @@ collision_mask = 2
 [node name="hand_flick" type="Sprite2D" parent="."]
 position = Vector2(12, -31)
 scale = Vector2(0.138683, 0.148611)
-texture = ExtResource("3_7w71e")
+texture = ExtResource("3_p47bc")
 flip_h = true
 flip_v = true
+
+[node name="area_cubos" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_cubos"]
+shape = SubResource("CircleShape2D_gmlin")

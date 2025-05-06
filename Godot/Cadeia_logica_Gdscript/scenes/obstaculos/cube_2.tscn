@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5rp7io7i1238"]
+
+[ext_resource type="Script" uid="uid://c5xxupk1d22c2" path="res://scenes/obstaculos/cube_2.gd" id="1_uaduo"]
+[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="2_isyoy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jwrs"]
+size = Vector2(57.5, 57.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqpox"]
+atlas = ExtResource("2_isyoy")
+region = Rect2(193.289, 124.615, 64.5159, 64.1061)
+
+[node name="Cube" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_uaduo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 2.25)
+shape = SubResource("RectangleShape2D_4jwrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_fqpox")

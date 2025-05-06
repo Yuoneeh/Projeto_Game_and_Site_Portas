@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buei374rla8hh"
-path="res://.godot/imported/hand_flicking.png-4de96cc6b90738f1c843a346030d3206.ctex"
+uid="uid://3y1g07m35qr5"
+path="res://.godot/imported/UI_assets.png-d7d30b0fc6f39362cbe3200858eebd75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/actors/hand_flicking.png"
-dest_files=["res://.godot/imported/hand_flicking.png-4de96cc6b90738f1c843a346030d3206.ctex"]
+source_file="res://scenes/menus/UI_assets.png"
+dest_files=["res://.godot/imported/UI_assets.png-d7d30b0fc6f39362cbe3200858eebd75.ctex"]
 
 [params]
 

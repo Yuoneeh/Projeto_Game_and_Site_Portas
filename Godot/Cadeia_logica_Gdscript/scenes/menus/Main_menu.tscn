@@ -1,50 +1,33 @@
 [gd_scene load_steps=15 format=3 uid="uid://bjvo8jfhh5tbc"]
 
-[ext_resource type="Script" uid="uid://d0at4or75qgl0" path="res://scripts/main_menu.gd" id="1_ow2sg"]
-[ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://assets/menu/Menu_background.png" id="2_qtdab"]
-[ext_resource type="Texture2D" uid="uid://3y1g07m35qr5" path="res://assets/menu/UI_assets.png" id="3_610dt"]
-[ext_resource type="AudioStream" uid="uid://beqcvv7seks8g" path="res://assets/sfx/old_pc_click.wav" id="4_qtdab"]
+[ext_resource type="Script" uid="uid://kmbxmnlgx16c" path="res://scenes/menus/main_menu.gd" id="1_o7l4w"]
+[ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="2_c6l8p"]
+[ext_resource type="Texture2D" uid="uid://3y1g07m35qr5" path="res://scenes/menus/UI_assets.png" id="3_jeb7r"]
+[ext_resource type="AudioStream" uid="uid://beqcvv7seks8g" path="res://scenes/menus/old_pc_click.wav" id="4_kruux"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3tmrh"]
-atlas = ExtResource("3_610dt")
+atlas = ExtResource("3_jeb7r")
 region = Rect2(70.7765, 439.533, 532.421, 85.7445)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvwki"]
-atlas = ExtResource("3_610dt")
+atlas = ExtResource("3_jeb7r")
 region = Rect2(254.479, 264.493, 129.354, 50.9979)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2w1r8"]
-atlas = ExtResource("3_610dt")
+atlas = ExtResource("3_jeb7r")
 region = Rect2(248.735, 326.675, 143.56, 43.3228)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4q5n"]
-atlas = ExtResource("3_610dt")
+atlas = ExtResource("3_jeb7r")
 region = Rect2(240.93, 200.779, 161.285, 45.336)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m5x4w"]
-atlas = ExtResource("3_610dt")
+atlas = ExtResource("3_jeb7r")
 region = Rect2(530.722, 267.829, 96.4099, 47.008)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xkoo8"]
-atlas = ExtResource("3_610dt")
+atlas = ExtResource("3_jeb7r")
 region = Rect2(515.777, 217.87, 122.631, 29.3421)
-
-[sub_resource type="Animation" id="Animation_k7amj"]
-resource_name = "logo"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/logo:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(318, 195), Vector2(318, 189.355), Vector2(318, 206.765), Vector2(318, 195)]
-}
 
 [sub_resource type="Animation" id="Animation_0mtrp"]
 length = 0.001
@@ -88,6 +71,23 @@ tracks/0/keys = {
 "values": [Vector2(1.1, 1.1)]
 }
 
+[sub_resource type="Animation" id="Animation_k7amj"]
+resource_name = "logo"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(318, 195), Vector2(318, 189.355), Vector2(318, 206.765), Vector2(318, 195)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tpbep"]
 _data = {
 &"RESET": SubResource("Animation_0mtrp"),
@@ -96,7 +96,7 @@ _data = {
 }
 
 [node name="main_menu" type="Node2D"]
-script = ExtResource("1_ow2sg")
+script = ExtResource("1_o7l4w")
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 9.44)
@@ -122,7 +122,7 @@ offset_left = 255.0
 offset_top = 102.0
 offset_right = 895.0
 offset_bottom = 550.0
-texture = ExtResource("2_qtdab")
+texture = ExtResource("2_c6l8p")
 
 [node name="logo" type="TextureRect" parent="Control"]
 layout_mode = 0
@@ -177,18 +177,26 @@ offset_right = 388.0
 offset_bottom = 541.0
 texture_normal = SubResource("AtlasTexture_xkoo8")
 
+[node name="LinkButton" type="LinkButton" parent="Control/btn_credits"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "click me"
+uri = "https://www.youtube.com/watch?v=EfO86PpBcDg"
+
 [node name="animations" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_tpbep")
 }
 
-[node name="sfx" type="Node2D" parent="."]
-
-[node name="OldPcClick" type="AudioStreamPlayer" parent="sfx"]
-stream = ExtResource("4_qtdab")
+[node name="OldPcClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kruux")
 
 [node name="timer_sfx" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="pressed" from="Control/btn_play" to="." method="_on_btn_play_pressed"]
 [connection signal="pressed" from="Control/btn_quit" to="." method="_on_btn_quit_pressed"]
+[connection signal="pressed" from="Control/btn_credits" to="." method="_on_btn_credits_pressed"]
 [connection signal="timeout" from="timer_sfx" to="." method="_on_timer_sfx_timeout"]

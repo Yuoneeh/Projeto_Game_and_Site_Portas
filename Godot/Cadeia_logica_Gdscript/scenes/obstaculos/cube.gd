@@ -15,7 +15,7 @@ func _ready() -> void:
 		player.move_down.connect(move_down)
 
 
-func _process(delta):
+func _process(_delta):
 	var player_node = get_tree().get_nodes_in_group("player")
 	if player_node.size() > 0:
 		var player = player_node[0] as CharacterBody2D

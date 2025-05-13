@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dk8a7cmxxjdkp"]
+
+[ext_resource type="Script" uid="uid://c3ikdf1hpsbp2" path="res://resources/stage_change.gd" id="1_5m2a8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dga24"]
+size = Vector2(20, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxy0u"]
+size = Vector2(20, 66)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dga24"]
+radius = 19.105
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxy0u"]
+radius = 19.0
+
+[node name="stage_change" type="Node2D"]
+script = ExtResource("1_5m2a8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="left_gate" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(51, 225)
+shape = SubResource("RectangleShape2D_dga24")
+
+[node name="right_gate" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(651, 224)
+shape = SubResource("RectangleShape2D_qxy0u")
+
+[node name="stage_clear_left" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="stage_clear_left" type="CollisionShape2D" parent="stage_clear_left"]
+position = Vector2(20, 226)
+shape = SubResource("CircleShape2D_dga24")
+
+[node name="stage_clear_right" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="stage_clear_right" type="CollisionShape2D" parent="stage_clear_right"]
+position = Vector2(683, 224)
+shape = SubResource("CircleShape2D_qxy0u")
+
+[connection signal="body_entered" from="stage_clear_left" to="." method="_on_stage_clear_left_body_entered"]
+[connection signal="body_entered" from="stage_clear_right" to="." method="_on_stage_clear_right_body_entered"]

@@ -24,46 +24,47 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	ray_interactables.force_raycast_update()
 	#tile_data_stuff()
-	if moving == false:
-		if Input.is_action_just_pressed("walk_left"):
-			moving = true
-			var tween = create_tween()
-			tween.tween_property(self, "rotation",
-			rotation - 0.25, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
-			dir = Vector2.LEFT
-			push_stuff()
-			print("Left")
-			move(dir)
-			tween.tween_property(self, "rotation",
-			rotation , 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
-			await tween.finished
-			moving = false
-			rotation = 0
-		if Input.is_action_just_pressed("walk_right"):
-			moving = true
-			var tween = create_tween()
-			tween.tween_property(self, "rotation",
-			rotation + 0.25, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
-			dir = Vector2.RIGHT
-			push_stuff()
-			print("Right")
-			move(dir)
-			tween.tween_property(self, "rotation",
-			rotation , 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
-			await tween.finished
-			moving = false
-			rotation = 0
-			
-		if Input.is_action_just_pressed("walk_up"):
-			dir = Vector2.UP
-			push_stuff()
-			print("Up")
-			move(dir)
-		if Input.is_action_just_pressed("walk_down"):
-			dir = Vector2.DOWN
-			push_stuff()
-			print("Down")
-			move(dir)
+	if moving == !false:
+		return
+	if Input.is_action_just_pressed("walk_left"):
+		moving = true
+		var tween = create_tween()
+		tween.tween_property(anim, "rotation",
+		rotation - 0.25, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+		dir = Vector2.LEFT
+		push_stuff()
+		print("Left")
+		move(dir)
+		tween.tween_property(anim, "rotation",
+		rotation , 0.75/animation_speed).set_trans(Tween.TRANS_SINE)
+		await tween.finished
+		moving = false
+		rotation = 0
+	if Input.is_action_just_pressed("walk_right"):
+		moving = true
+		var tween = create_tween()
+		tween.tween_property(anim, "rotation",
+		rotation + 0.25, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+		dir = Vector2.RIGHT
+		push_stuff()
+		print("Right")
+		move(dir)
+		tween.tween_property(anim, "rotation",
+		rotation , 0.75/animation_speed).set_trans(Tween.TRANS_SINE)
+		await tween.finished
+		moving = false
+		rotation = 0
+		
+	if Input.is_action_just_pressed("walk_up"):
+		dir = Vector2.UP
+		push_stuff()
+		print("Up")
+		move(dir)
+	if Input.is_action_just_pressed("walk_down"):
+		dir = Vector2.DOWN
+		push_stuff()
+		print("Down")
+		move(dir)
 			
 	if moving == false && socavel == true:
 		#Push Right
@@ -146,6 +147,7 @@ func move(dir):
 	ray.force_raycast_update()
 	if !ray.is_colliding():
 		#position += dir * tile_size
+		
 		var tween = create_tween()
 		tween.tween_property(self, "position",
 		position + dir * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)

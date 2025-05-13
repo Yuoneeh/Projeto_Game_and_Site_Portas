@@ -53,6 +53,7 @@ func _process(delta: float) -> void:
 			await tween.finished
 			moving = false
 			rotation = 0
+			
 		if Input.is_action_just_pressed("walk_up"):
 			dir = Vector2.UP
 			push_stuff()
@@ -74,12 +75,12 @@ func _process(delta: float) -> void:
 			flick_hand.rotation = 0
 			flick_hand.visible = true
 			
-			dir == Vector2.RIGHT
+			dir = Vector2.RIGHT
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.RIGHT:
 			flick_hand.visible = false
 			move_right.emit()
-			dir == Vector2.RIGHT
+			dir = Vector2.RIGHT
 			ray_interactables.force_raycast_update()
 			socavel = false
 		#Push Down
@@ -91,12 +92,12 @@ func _process(delta: float) -> void:
 			flick_hand.visible = true
 			flick_hand.flip_h = true
 			flick_hand.flip_v = false
-			dir == Vector2.DOWN
+			dir = Vector2.DOWN
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.DOWN:
 			flick_hand.visible = false
 			move_down.emit()
-			dir == Vector2.DOWN
+			dir = Vector2.DOWN
 			ray_interactables.force_raycast_update()
 			socavel = false
 		##Push UP
@@ -108,14 +109,14 @@ func _process(delta: float) -> void:
 			flick_hand.visible = true
 			flick_hand.flip_h = true
 			flick_hand.flip_v = false
-			dir == Vector2.UP
+			dir = Vector2.UP
 			ray_interactables.force_raycast_update()
 			
 		if Input.is_action_just_released("action_02") && dir == Vector2.UP:
 			flick_hand.visible = false
 			var cubos = get_tree().get_nodes_in_group("cubos")
 			#cubos
-			dir == Vector2.UP
+			dir = Vector2.UP
 			ray_interactables.force_raycast_update()
 			socavel = false
 		##Push LEFT
@@ -127,12 +128,12 @@ func _process(delta: float) -> void:
 			flick_hand.visible = true
 			flick_hand.flip_h = false
 			flick_hand.flip_v = false
-			dir == Vector2.LEFT
+			dir = Vector2.LEFT
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.LEFT:
 			flick_hand.visible = false
 			
-			dir == Vector2.LEFT
+			dir = Vector2.LEFT
 			ray_interactables.force_raycast_update()
 			socavel = false
 #func tile_data_stuff():

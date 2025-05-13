@@ -61,7 +61,7 @@ func _on_btn_play_pressed() -> void:
 	start_game()
 
 func start_game():
-	get_tree().change_scene_to_file("res://scenes/main/viewport.tscn")
+	Global.change_scene(1)
 
 
 func _on_btn_credits_pressed() -> void:

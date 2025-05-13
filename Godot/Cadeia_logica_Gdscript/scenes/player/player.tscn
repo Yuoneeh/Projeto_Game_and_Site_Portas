@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ce7eo2f7bup5r"]
+[gd_scene load_steps=12 format=3 uid="uid://ce7eo2f7bup5r"]
 
 [ext_resource type="Script" uid="uid://n7iiydd4tyco" path="res://scenes/player/player.gd" id="1_gmlin"]
 [ext_resource type="Texture2D" uid="uid://f6fgxcx3j3qa" path="res://scenes/player/sprite_teste.png" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://dkb3s3tncxktl" path="res://scenes/player/sprite_teste2.png" id="3_lvxji"]
 [ext_resource type="Texture2D" uid="uid://buei374rla8hh" path="res://scenes/player/hand_flicking.png" id="3_p47bc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2ri5"]
@@ -16,9 +17,12 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_50q57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lvxji")
 }],
 "loop": true,
-"name": &"default_teste",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [],
@@ -30,6 +34,67 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
 radius = 47.0956
 
+[sub_resource type="Animation" id="Animation_p47bc"]
+resource_name = "idle"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.113446, 0.0, -0.113446, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.766667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-2, -10), Vector2(-2, -8.825), Vector2(-2, -10)]
+}
+
+[sub_resource type="Animation" id="Animation_75vfm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0owmy"]
+_data = {
+&"RESET": SubResource("Animation_75vfm"),
+&"idle": SubResource("Animation_p47bc")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 2
@@ -39,12 +104,12 @@ script = ExtResource("1_gmlin")
 shape = SubResource("CircleShape2D_p2ri5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3, -10)
+position = Vector2(-2, -10)
 sprite_frames = SubResource("SpriteFrames_yknti")
-animation = &"default_teste"
+animation = &"idle"
+frame_progress = 0.428076
 
 [node name="collision_detector" type="RayCast2D" parent="."]
-visible = false
 target_position = Vector2(0, 64)
 collide_with_areas = true
 
@@ -61,4 +126,10 @@ flip_v = true
 [node name="area_cubos" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_cubos"]
+visible = false
 shape = SubResource("CircleShape2D_gmlin")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0owmy")
+}

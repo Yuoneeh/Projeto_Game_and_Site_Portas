@@ -1,8 +1,10 @@
 extends CharacterBody2D
+#Gilica
 signal move_right
 signal move_down
 signal move_up
 signal move_left
+@onready var anim = $AnimatedSprite2D
 @onready var ray = $collision_detector
 @onready var tile_interactions = $"../interaction_grid"
 @onready var tile_boxes = $"../interactables"
@@ -15,6 +17,7 @@ var socavel = false
 var moving = false
 
 func _ready() -> void:
+	anim.play("idle")
 	flick_hand.visible = false
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
@@ -23,16 +26,33 @@ func _process(delta: float) -> void:
 	#tile_data_stuff()
 	if moving == false:
 		if Input.is_action_just_pressed("walk_left"):
+			moving = true
+			var tween = create_tween()
+			tween.tween_property(self, "rotation",
+			rotation - 0.25, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
 			dir = Vector2.LEFT
 			push_stuff()
 			print("Left")
 			move(dir)
+			tween.tween_property(self, "rotation",
+			rotation , 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+			await tween.finished
+			moving = false
+			rotation = 0
 		if Input.is_action_just_pressed("walk_right"):
+			moving = true
+			var tween = create_tween()
+			tween.tween_property(self, "rotation",
+			rotation + 0.25, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
 			dir = Vector2.RIGHT
 			push_stuff()
 			print("Right")
 			move(dir)
-			
+			tween.tween_property(self, "rotation",
+			rotation , 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+			await tween.finished
+			moving = false
+			rotation = 0
 		if Input.is_action_just_pressed("walk_up"):
 			dir = Vector2.UP
 			push_stuff()

@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://c2ohu5kfgsa8a"]
+[gd_scene load_steps=15 format=4 uid="uid://c2ohu5kfgsa8a"]
 
 [ext_resource type="Script" uid="uid://ceocfigh8npdg" path="res://scenes/main/game_scene.gd" id="1_b6bv0"]
 [ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="2_oc4kc"]
 [ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="2_ubwgw"]
+[ext_resource type="FontFile" uid="uid://djfhtdcvbfmpi" path="res://assets/font/PixelifySans-VariableFont_wght.ttf" id="3_s8va5"]
 [ext_resource type="TileSet" uid="uid://03bbwqdht020" path="res://resources/teste.tres" id="3_vkq25"]
 [ext_resource type="PackedScene" uid="uid://cc13e3o40cveo" path="res://scenes/obstaculos/cube.tscn" id="4_7lrji"]
+[ext_resource type="Texture2D" uid="uid://ddhol4sg4iphv" path="res://assets/environment/game_background.png" id="4_dga24"]
 [ext_resource type="PackedScene" uid="uid://ce7eo2f7bup5r" path="res://scenes/player/player.tscn" id="5_rssyh"]
 [ext_resource type="PackedScene" uid="uid://b5rp7io7i1238" path="res://scenes/obstaculos/cube_2.tscn" id="6_hwp66"]
 
@@ -64,6 +66,10 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_8cswh")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc4kc"]
+atlas = ExtResource("2_ubwgw")
+region = Rect2(330.111, 133.9, 44.2875, 21.1)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_b6bv0")
 
@@ -95,6 +101,22 @@ offset_right = 895.0
 offset_bottom = 550.0
 texture = ExtResource("2_oc4kc")
 
+[node name="TextureRect" type="TextureRect" parent="Backgourd_UI"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 649.0
+texture = ExtResource("4_dga24")
+
+[node name="Label" type="Label" parent="Backgourd_UI"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = -4.0
+offset_right = 880.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("3_s8va5")
+theme_override_font_sizes/font_size = 101
+text = "PORTA AND    "
+
 [node name="Game" type="Node2D" parent="."]
 position = Vector2(220, 100)
 
@@ -120,8 +142,16 @@ metadata/_edit_lock_ = true
 [node name="Cube" parent="Game" instance=ExtResource("4_7lrji")]
 position = Vector2(223, 285)
 
-[node name="Player" parent="Game" instance=ExtResource("5_rssyh")]
-position = Vector2(351, 160)
-
 [node name="Cube2" parent="Game" instance=ExtResource("6_hwp66")]
 position = Vector2(479, 223)
+
+[node name="Sprite2D" type="Sprite2D" parent="Game"]
+position = Vector2(224, 163)
+texture = SubResource("AtlasTexture_oc4kc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Game"]
+position = Vector2(477, 358)
+texture = SubResource("AtlasTexture_oc4kc")
+
+[node name="Player" parent="Game" instance=ExtResource("5_rssyh")]
+position = Vector2(351, 160)

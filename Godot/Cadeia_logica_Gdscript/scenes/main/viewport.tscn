@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqbkfhr2n3gph"]
 
 [ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="1_1si4u"]
-[ext_resource type="PackedScene" uid="uid://dh5olsaf2g3np" path="res://scenes/main/main.tscn" id="2_7pej6"]
+[ext_resource type="PackedScene" uid="uid://dh5olsaf2g3np" path="res://scenes/main/main_first.tscn" id="2_7pej6"]
 
 [node name="viewport" type="Node2D"]
 
@@ -32,5 +32,5 @@ offset_right = 895.0
 offset_bottom = 550.0
 texture = ExtResource("1_1si4u")
 
-[node name="Teste" parent="." instance=ExtResource("2_7pej6")]
-position = Vector2(218, 106)
+[node name="Main" parent="." instance=ExtResource("2_7pej6")]
+position = Vector2(226, 102)

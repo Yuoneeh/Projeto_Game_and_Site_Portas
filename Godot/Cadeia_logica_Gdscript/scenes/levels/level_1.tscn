@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://cjnxjpxjpc3cd"]
+[gd_scene load_steps=12 format=4 uid="uid://c2ohu5kfgsa8a"]
 
 [ext_resource type="Script" uid="uid://ceocfigh8npdg" path="res://scenes/main/game_scene.gd" id="1_b6bv0"]
+[ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="2_oc4kc"]
 [ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="2_ubwgw"]
-[ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="2_vkq25"]
 [ext_resource type="TileSet" uid="uid://03bbwqdht020" path="res://resources/teste.tres" id="3_vkq25"]
 [ext_resource type="PackedScene" uid="uid://cc13e3o40cveo" path="res://scenes/obstaculos/cube.tscn" id="4_7lrji"]
 [ext_resource type="PackedScene" uid="uid://ce7eo2f7bup5r" path="res://scenes/player/player.tscn" id="5_rssyh"]
@@ -93,7 +93,7 @@ offset_left = 255.0
 offset_top = 102.0
 offset_right = 895.0
 offset_bottom = 550.0
-texture = ExtResource("2_vkq25")
+texture = ExtResource("2_oc4kc")
 
 [node name="Game" type="Node2D" parent="."]
 position = Vector2(220, 100)

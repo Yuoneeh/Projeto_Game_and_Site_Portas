@@ -90,6 +90,7 @@ func _process(delta: float) -> void:
 			flick_hand.flip_v = false
 			dir == Vector2.UP
 			ray_interactables.force_raycast_update()
+			
 		if Input.is_action_just_released("action_02") && dir == Vector2.UP:
 			flick_hand.visible = false
 			var cubos = get_tree().get_nodes_in_group("cubos")

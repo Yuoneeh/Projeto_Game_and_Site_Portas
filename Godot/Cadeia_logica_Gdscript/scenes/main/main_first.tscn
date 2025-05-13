@@ -1,15 +1,14 @@
-[gd_scene load_steps=12 format=4 uid="uid://cjnxjpxjpc3cd"]
+[gd_scene load_steps=11 format=4 uid="uid://dh5olsaf2g3np"]
 
-[ext_resource type="Script" uid="uid://ceocfigh8npdg" path="res://scenes/main/game_scene.gd" id="1_b6bv0"]
-[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="2_ubwgw"]
-[ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="2_vkq25"]
-[ext_resource type="TileSet" uid="uid://03bbwqdht020" path="res://resources/teste.tres" id="3_vkq25"]
-[ext_resource type="PackedScene" uid="uid://cc13e3o40cveo" path="res://scenes/obstaculos/cube.tscn" id="4_7lrji"]
-[ext_resource type="PackedScene" uid="uid://ce7eo2f7bup5r" path="res://scenes/player/player.tscn" id="5_rssyh"]
-[ext_resource type="PackedScene" uid="uid://b5rp7io7i1238" path="res://scenes/obstaculos/cube_2.tscn" id="6_hwp66"]
+[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="1_3r2dd"]
+[ext_resource type="Script" uid="uid://ceocfigh8npdg" path="res://scenes/main/game_scene.gd" id="1_dp01m"]
+[ext_resource type="TileSet" uid="uid://03bbwqdht020" path="res://resources/teste.tres" id="1_kta4m"]
+[ext_resource type="PackedScene" uid="uid://ce7eo2f7bup5r" path="res://scenes/player/player.tscn" id="2_2gqm3"]
+[ext_resource type="PackedScene" uid="uid://cc13e3o40cveo" path="res://scenes/obstaculos/cube.tscn" id="5_8cswh"]
+[ext_resource type="PackedScene" uid="uid://b5rp7io7i1238" path="res://scenes/obstaculos/cube_2.tscn" id="6_ow5a4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dp01m"]
-texture = ExtResource("2_ubwgw")
+texture = ExtResource("1_3r2dd")
 texture_region_size = Vector2i(64, 64)
 6:1/0 = 0
 3:2/0 = 0
@@ -37,7 +36,7 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_dp01m")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8cswh"]
-texture = ExtResource("2_ubwgw")
+texture = ExtResource("1_3r2dd")
 texture_region_size = Vector2i(64, 64)
 6:1/0 = 0
 3:2/0 = 0
@@ -65,63 +64,32 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_8cswh")
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_b6bv0")
+script = ExtResource("1_dp01m")
 
-[node name="Backgourd_UI" type="Control" parent="."]
-custom_minimum_size = Vector2(0, 9.44)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 1153.0
-offset_bottom = 648.0
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect" type="ColorRect" parent="Backgourd_UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0980392, 0.0901961, 0.105882, 1)
-
-[node name="fundo" type="TextureRect" parent="Backgourd_UI"]
-visible = false
-layout_mode = 0
-offset_left = 255.0
-offset_top = 102.0
-offset_right = 895.0
-offset_bottom = 550.0
-texture = ExtResource("2_vkq25")
-
-[node name="Game" type="Node2D" parent="."]
-position = Vector2(220, 100)
-
-[node name="Visual_assets" type="TileMapLayer" parent="Game"]
+[node name="Visual_assets" type="TileMapLayer" parent="."]
 position = Vector2(-1, 0)
 tile_map_data = PackedByteArray("AAABAAEAAAACAAgAAAABAAIAAAACAAgAAAABAAMAAAACAAgAAAACAAEAAAACAAgAAAACAAIAAAACAAgAAAACAAMAAAACAAgAAAADAAEAAAACAAgAAAADAAMAAAACAAgAAAAEAAEAAAACAAgAAAAEAAIAAAACAAgAAAAEAAMAAAACAAgAAAAFAAEAAAACAAgAAAAFAAIAAAACAAgAAAAFAAMAAAACAAgAAAAGAAEAAAACAAgAAAAGAAIAAAACAAgAAAAGAAMAAAACAAgAAAAHAAEAAAACAAgAAAAHAAIAAAACAAgAAAAHAAMAAAACAAgAAAAHAAQAAAACAAgAAAAHAAUAAAACAAgAAAAIAAEAAAACAAgAAAAIAAIAAAACAAgAAAAIAAMAAAACAAgAAAAIAAQAAAACAAgAAAAIAAUAAAACAAgAAAABAAAAAAACAAYAAAACAAAAAAACAAYAAAADAAAAAAACAAYAAAAEAAAAAAACAAYAAAAFAAAAAAACAAYAAAAGAAAAAAACAAYAAAAHAAAAAAACAAYAAAAIAAAAAAACAAYAAAAAAAIAAAAAAAgAAAAAAAMAAAABAAQAAAAAAAAAAAAAAAYAAAAAAAEAAAAAAAgAAAAAAAQAAAAAAAgAAAAAAAUAAAAAAAgAAAABAAQAAAACAAgAAAABAAUAAAACAAgAAAACAAQAAAACAAgAAAACAAUAAAACAAgAAAADAAQAAAACAAgAAAADAAUAAAACAAgAAAAEAAQAAAACAAgAAAAEAAUAAAACAAgAAAAFAAQAAAACAAgAAAAFAAUAAAACAAgAAAAGAAQAAAACAAgAAAAGAAUAAAACAAgAAAAAAAYAAAAAAAoAAAABAAYAAAACAAoAAAACAAYAAAACAAoAAAADAAYAAAACAAoAAAAEAAYAAAACAAoAAAAFAAYAAAACAAoAAAAGAAYAAAACAAoAAAAHAAYAAAACAAoAAAAIAAYAAAACAAoAAAAKAAAAAAAEAAYAAAAKAAEAAAAEAAgAAAAKAAIAAAAEAAgAAAAKAAMAAAACAAQAAAAKAAQAAAAEAAgAAAAKAAUAAAAEAAgAAAAKAAYAAAAEAAoAAAAJAAYAAAACAAoAAAAJAAAAAAACAAYAAAAJAAEAAAACAAgAAAAJAAIAAAACAAgAAAAJAAMAAAACAAgAAAAJAAQAAAACAAgAAAAJAAUAAAACAAgAAAADAAIAAAACAAgAAAA=")
 tile_set = SubResource("TileSet_8cswh")
 rendering_quadrant_size = 32
 
-[node name="interactables" type="TileMapLayer" parent="Game"]
+[node name="interactables" type="TileMapLayer" parent="."]
 visible = false
 tile_map_data = PackedByteArray("AAADAAIAAAADAAIAAAADAAQAAAADAAIAAAA=")
 tile_set = SubResource("TileSet_6cgey")
 
-[node name="interaction_grid" type="TileMapLayer" parent="Game"]
+[node name="interaction_grid" type="TileMapLayer" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.611765)
 position = Vector2(65, 63.2496)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAADAAAAAAADAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAEAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAEAAAAFAAAAAAAFAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAD//wAAAAABAAAAAAD//wEAAAABAAAAAAD//wIAAAABAAAAAAD//wMAAAABAAAAAAD//wQAAAABAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAP//AAABAAAAAAAHAP//AAABAAAAAAAGAP//AAABAAAAAAAFAP//AAABAAAAAAAEAP//AAABAAAAAAADAP//AAABAAAAAAACAP//AAABAAAAAAABAP//AAABAAAAAAAAAP//AAABAAAAAAD/////AAABAAAAAAAJAAAAAAABAAAAAAAJAAEAAAABAAAAAAAJAAIAAAABAAAAAAAJAAMAAAABAAAAAAAJAAQAAAABAAAAAAAJAP//AAABAAAAAAACAAAAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAEAAAAGAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAACAAEAAAACAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAD//wUAAAABAAAAAAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAACAAUAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAHAAUAAAABAAAAAAAIAAUAAAABAAAAAAAJAAUAAAABAAAAAAA=")
-tile_set = ExtResource("3_vkq25")
+tile_set = ExtResource("1_kta4m")
 metadata/_edit_lock_ = true
 
-[node name="Cube" parent="Game" instance=ExtResource("4_7lrji")]
+[node name="Cube" parent="." instance=ExtResource("5_8cswh")]
 position = Vector2(223, 285)
 
-[node name="Player" parent="Game" instance=ExtResource("5_rssyh")]
+[node name="Player" parent="." instance=ExtResource("2_2gqm3")]
 position = Vector2(351, 160)
 
-[node name="Cube2" parent="Game" instance=ExtResource("6_hwp66")]
+[node name="Cube2" parent="." instance=ExtResource("6_ow5a4")]
 position = Vector2(479, 223)

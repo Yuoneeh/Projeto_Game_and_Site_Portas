@@ -12,13 +12,13 @@ body {
     height: 100vh;
 }
 
-#DownloadButton {
-    background-color: rgb(19, 218, 69);
+#DownloadButtonPDF {
+    background-color: rgb(221, 24, 24);
     color: white;
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 5px;
-    font-family: "Pixelify Sans", sans-serif;
+    font-family: "Pixelify Sans, sans-serif";
     justify-content: center;
     margin-top: 15px;
     width: 300px;
@@ -80,7 +80,7 @@ body {
     background-image: url(Menu_principal\ \(2\).png);
     color: black;
     width: 600px;
-    height: 250px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;

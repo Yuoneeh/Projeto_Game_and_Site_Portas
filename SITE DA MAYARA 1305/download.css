@@ -28,12 +28,14 @@ body {
 /* CONTAINER PRINCIPAL */
 .conteiner {
     width: 800px;
+    height: 350px;
     padding: 20px;
     border: 2px solid white;
     background-image: url(https://bettysgraphics.neocities.org/images/backgrounds/stars%202.gif);
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .titulo,
@@ -46,13 +48,14 @@ body {
 }
 
 .nav {
-    height: 50px;
+    height: 51px;
     width: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid white;
     margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .lists {

@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccmxx705kdsqj"]
+
+[ext_resource type="Script" uid="uid://br3bfxuhyrwcw" path="res://scenes/ui_arrows/ui_arrows.gd" id="1_4r68o"]
+[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="1_ctocq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
+atlas = ExtResource("1_ctocq")
+region = Rect2(414, 321, 33, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
+atlas = ExtResource("1_ctocq")
+region = Rect2(414, 705, 33, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qek5x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p47bc")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vfm")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0owmy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p47bc")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vfm")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
+atlas = ExtResource("1_ctocq")
+region = Rect2(449, 287, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
+atlas = ExtResource("1_ctocq")
+region = Rect2(449, 670, 62, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h17s1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qek5x")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gtgg")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[node name="ui_arrows" type="Node2D"]
+script = ExtResource("1_4r68o")
+
+[node name="left_arrow" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-48.41, 0)
+sprite_frames = SubResource("SpriteFrames_qek5x")
+animation = &"off"
+
+[node name="right_arrow" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(48, 0)
+sprite_frames = SubResource("SpriteFrames_0owmy")
+animation = &"off"
+flip_h = true
+
+[node name="up_arrow" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-2, -24)
+sprite_frames = SubResource("SpriteFrames_h17s1")
+animation = &"off"
+offset = Vector2(2, -23)
+
+[node name="down_arrow" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 48)
+sprite_frames = SubResource("SpriteFrames_h17s1")
+animation = &"off"
+flip_v = true

@@ -4,12 +4,21 @@ signal move_right
 signal move_down
 signal move_up
 signal move_left
-@onready var anim = $AnimatedSprite2D
+signal move_right_arrow
+signal move_down_arrow
+signal move_up_arrow
+signal move_left_arrow
+signal arrow_hide
+signal arrow_show
+
+
+@onready var anim = %player_sprite
 @onready var ray = $collision_detector
 @onready var tile_interactions = $"../interaction_grid"
 @onready var tile_boxes = $"../interactables"
 @onready var ray_interactables = $interactables_ray
-@onready var flick_hand = $hand_flick
+@onready var flick_hand = %hand_flick
+
 var animation_speed = 3
 var tile_size = 64
 var dir
@@ -24,47 +33,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	ray_interactables.force_raycast_update()
 	#tile_data_stuff()
-	if moving == !false:
-		return
-	if Input.is_action_just_pressed("walk_left"):
-		moving = true
-		var tween = create_tween()
-		tween.tween_property(anim, "rotation",
-		rotation - 0.25, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
-		dir = Vector2.LEFT
-		push_stuff()
-		print("Left")
-		move(dir)
-		tween.tween_property(anim, "rotation",
-		rotation , 0.75/animation_speed).set_trans(Tween.TRANS_SINE)
-		await tween.finished
-		moving = false
-		rotation = 0
-	if Input.is_action_just_pressed("walk_right"):
-		moving = true
-		var tween = create_tween()
-		tween.tween_property(anim, "rotation",
-		rotation + 0.25, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
-		dir = Vector2.RIGHT
-		push_stuff()
-		print("Right")
-		move(dir)
-		tween.tween_property(anim, "rotation",
-		rotation , 0.75/animation_speed).set_trans(Tween.TRANS_SINE)
-		await tween.finished
-		moving = false
-		rotation = 0
-		
-	if Input.is_action_just_pressed("walk_up"):
-		dir = Vector2.UP
-		push_stuff()
-		print("Up")
-		move(dir)
-	if Input.is_action_just_pressed("walk_down"):
-		dir = Vector2.DOWN
-		push_stuff()
-		print("Down")
-		move(dir)
+	inputs()
 			
 	if moving == false && socavel == true:
 		#Push Right
@@ -80,7 +49,7 @@ func _process(delta: float) -> void:
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.RIGHT:
 			flick_hand.visible = false
-			move_right.emit()
+			#move_right.emit()
 			dir = Vector2.RIGHT
 			ray_interactables.force_raycast_update()
 			socavel = false
@@ -97,7 +66,7 @@ func _process(delta: float) -> void:
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.DOWN:
 			flick_hand.visible = false
-			move_down.emit()
+			#move_down.emit()
 			dir = Vector2.DOWN
 			ray_interactables.force_raycast_update()
 			socavel = false
@@ -133,10 +102,11 @@ func _process(delta: float) -> void:
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.LEFT:
 			flick_hand.visible = false
-			
 			dir = Vector2.LEFT
 			ray_interactables.force_raycast_update()
 			socavel = false
+
+
 #func tile_data_stuff():
 #	var tile_ tile_interactions.get_cell_tile_data(tile_type):
 	
@@ -147,12 +117,13 @@ func move(dir):
 	ray.force_raycast_update()
 	if !ray.is_colliding():
 		#position += dir * tile_size
-		
 		var tween = create_tween()
 		tween.tween_property(self, "position",
-		position + dir * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+		position + dir * tile_size, 0.75/animation_speed).set_trans(Tween.TRANS_SINE)
 		moving = true
+		emit_signal("arrow_hide")
 		await tween.finished
+		emit_signal("arrow_show")
 		moving = false
 	if ray_interactables.is_colliding():
 		print("Há objetos interagiveis")
@@ -177,3 +148,50 @@ func push_stuff():
 	#if !ray_interactables.is_colliding():
 		#print("Não há objetos interagiveis")
 	#	socavel = false
+
+func inputs():
+	if moving == !false:
+		return
+	if Input.is_action_just_pressed("walk_left"):
+		emit_signal("move_left_arrow")
+		moving = true
+		var tween = create_tween()
+		tween.tween_property(anim, "rotation",
+		rotation - 0.25, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+		dir = Vector2.LEFT
+		push_stuff()
+		print("Left")
+		move(dir)
+		tween.tween_property(anim, "rotation",
+		rotation , 0.75/animation_speed).set_trans(Tween.TRANS_SINE)
+		await tween.finished
+		moving = false
+		rotation = 0
+	if Input.is_action_just_pressed("walk_right"):
+		emit_signal("move_right_arrow")
+		moving = true
+		var tween = create_tween()
+		tween.tween_property(anim, "rotation",
+		rotation + 0.25, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
+		dir = Vector2.RIGHT
+		push_stuff()
+		print("Right")
+		move(dir)
+		tween.tween_property(anim, "rotation",
+		rotation , 0.75/animation_speed).set_trans(Tween.TRANS_SINE)
+		await tween.finished
+		moving = false
+		rotation = 0
+		
+	if Input.is_action_just_pressed("walk_up"):
+		emit_signal("move_up_arrow")
+		dir = Vector2.UP
+		push_stuff()
+		print("Up")
+		move(dir)
+	if Input.is_action_just_pressed("walk_down"):
+		emit_signal("move_down_arrow")
+		dir = Vector2.DOWN
+		push_stuff()
+		print("Down")
+		move(dir)

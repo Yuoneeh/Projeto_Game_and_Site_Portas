@@ -173,14 +173,17 @@ position = Vector2(223, 285)
 position = Vector2(479, 223)
 
 [node name="Sprite2D" type="Sprite2D" parent="Game"]
+z_index = 1
 position = Vector2(224, 163)
 texture = SubResource("AtlasTexture_oc4kc")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Game"]
+visibility_layer = 2
 position = Vector2(477, 358)
 texture = SubResource("AtlasTexture_oc4kc")
 
 [node name="Player" parent="Game" instance=ExtResource("10_xgklb")]
+visibility_layer = 2
 position = Vector2(351, 160)
 
 [node name="stage_change" parent="Game" instance=ExtResource("11_5wre2")]

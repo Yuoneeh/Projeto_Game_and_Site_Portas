@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cc13e3o40cveo" path="res://scenes/obstaculos/cube.tscn" id="8_qgoyv"]
 [ext_resource type="PackedScene" uid="uid://ce7eo2f7bup5r" path="res://scenes/player/player.tscn" id="10_xgklb"]
 [ext_resource type="PackedScene" uid="uid://dk8a7cmxxjdkp" path="res://scenes/scene_changer/stage_change.tscn" id="11_5wre2"]
+[ext_resource type="PackedScene" uid="uid://bh5t367sk4fs1" path="res://scenes/button/button_and.tscn" id="11_ouso4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dp01m"]
 texture = ExtResource("6_sv52t")
@@ -66,10 +67,6 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_6cgey"]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_8cswh")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oc4kc"]
-atlas = ExtResource("6_sv52t")
-region = Rect2(330.111, 133.9, 44.2875, 21.1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hwp66")
@@ -174,18 +171,14 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAA
 tile_set = ExtResource("7_7exfm")
 metadata/_edit_lock_ = true
 
+[node name="button" parent="Game" instance=ExtResource("11_ouso4")]
+position = Vector2(223, 161)
+
+[node name="button2" parent="Game" instance=ExtResource("11_ouso4")]
+position = Vector2(478, 358)
+
 [node name="Cube" parent="Game" instance=ExtResource("8_qgoyv")]
 position = Vector2(223, 285)
-
-[node name="Sprite2D" type="Sprite2D" parent="Game"]
-z_index = 1
-position = Vector2(224, 163)
-texture = SubResource("AtlasTexture_oc4kc")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Game"]
-visibility_layer = 2
-position = Vector2(477, 358)
-texture = SubResource("AtlasTexture_oc4kc")
 
 [node name="Player" parent="Game" instance=ExtResource("10_xgklb")]
 visibility_layer = 2
@@ -199,10 +192,10 @@ position = Vector2(479, 287)
 [node name="Cube3" parent="Game" instance=ExtResource("8_qgoyv")]
 position = Vector2(479, 158)
 
+[node name="Cube5" parent="Game" instance=ExtResource("8_qgoyv")]
+position = Vector2(607, 157)
+
 [node name="Cube4" parent="Game" instance=ExtResource("8_qgoyv")]
 position = Vector2(160, 94)
-
-[node name="Cube" parent="." instance=ExtResource("8_qgoyv")]
-position = Vector2(827, 257)
 
 [connection signal="button_up" from="Backgourd_UI/Button" to="." method="_on_button_button_up"]

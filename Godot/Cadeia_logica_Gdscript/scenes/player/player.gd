@@ -132,6 +132,7 @@ func move(dir):
 		emit_signal("arrow_hide")
 		await tween.finished
 		emit_signal("arrow_show")
+		#position = position.snapped(Vector2.ONE * tile_size)
 		moving = false
 	if ray_interactables.is_colliding():
 		print("Há objetos interagiveis")

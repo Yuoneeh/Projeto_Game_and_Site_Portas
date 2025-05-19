@@ -81,6 +81,7 @@ position = Vector2(0.25, 2.25)
 shape = SubResource("RectangleShape2D_4jwrs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["cubos"]]
+visible = false
 texture = SubResource("AtlasTexture_fqpox")
 
 [node name="raycasts_colisões" type="Node2D" parent="."]

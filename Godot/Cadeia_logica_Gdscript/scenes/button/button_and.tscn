@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh5t367sk4fs1"]
+
+[ext_resource type="Script" uid="uid://b5g4ywrh3gg07" path="res://scenes/button/button_and.gd" id="1_1on7n"]
+[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="2_qbxkc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4ppl"]
+atlas = ExtResource("2_qbxkc")
+region = Rect2(320, 129, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdarg"]
+atlas = ExtResource("2_qbxkc")
+region = Rect2(384, 97, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ahkh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4ppl")
+}],
+"loop": true,
+"name": &"non_pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdarg")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5qdr"]
+radius = 15.1327
+
+[node name="button" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_1on7n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_3ahkh")
+animation = &"non_pressed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_h5qdr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

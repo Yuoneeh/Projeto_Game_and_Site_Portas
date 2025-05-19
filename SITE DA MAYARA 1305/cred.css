@@ -9,14 +9,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .blocobranco {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px; /* ajuste o espaçamento entre os cards se desejar */
+    justify-items: center;
     background-color: rgba(0, 0, 0, 0.4);
     padding: 20px;
     border: 2px solid white;
@@ -26,17 +26,29 @@ body {
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 200px;
+    height: 300px;
+    padding: 15px;
     background-color: rgba(255, 255, 255, 0.1);
     border: 2px solid white;
     border-radius: 10px;
-    width: 200px;
-    padding: 15px;
-    text-align: center;
-    color: white;
-    font-family: "Pixelify Sans", sans-serif;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(4px);
     transition: transform 0.3s ease;
+    color: white;
+    font-family: "Pixelify Sans", sans-serif;
+    text-align: center;
+}
+
+.card-text {
+    flex: 1;
+    overflow: auto;
+    width: 100%;
+    margin-top: 8px;
 }
 
 .card:hover {
@@ -75,13 +87,15 @@ body {
 }
 
 .nav {
-    height: 50px;
-    width: 75%;
+    height: 51px;
+    width: 7%;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid white;
     margin-bottom: 20px;
+    text-align: center;
+    margin: 0 auto 20px auto;
 }
 
 .lists {

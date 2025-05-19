@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #DownloadButton {
@@ -68,7 +68,7 @@ body {
 
 .nav {
     height: 51px;
-    width: 75%;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;

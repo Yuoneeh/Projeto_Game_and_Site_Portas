@@ -19,3 +19,8 @@ Sobre a movimentação dos cubos ao analisar a dinamica entre a movimentação d
 	-O personagem pode se mover juntamente ao cubo carregando-o
 	-O Cubo pode se teleportar para a casa contraria a direção do empurrão
 	-O Personagem pode realizar um peteleco com uma mão comicamente grande/realista de até 3 forças que empurra o cubo / interage com o objeto
+
+
+Mecanica de empurrar cubos:
+
+	Esta mecanica vai ir de emitir um sinal para os atore para criar um objeto de colisão acima da mão onde o cubo no momento que detectar uma colisão sera mandado pela área oposta de onde ele veio

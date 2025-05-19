@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc13e3o40cveo"]
+[gd_scene load_steps=9 format=3 uid="uid://cc13e3o40cveo"]
 
 [ext_resource type="Script" uid="uid://cio6wjckw08ao" path="res://scenes/obstaculos/cube.gd" id="1_fqpox"]
 [ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="1_wgndh"]
@@ -71,6 +71,8 @@ _data = {
 &"shake": SubResource("Animation_eh1wb")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_eh1wb"]
+
 [node name="Cube" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
@@ -81,7 +83,7 @@ position = Vector2(0.25, 2.25)
 shape = SubResource("RectangleShape2D_4jwrs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["cubos"]]
-visible = false
+scale = Vector2(0.666957, 0.680329)
 texture = SubResource("AtlasTexture_fqpox")
 
 [node name="raycasts_colisões" type="Node2D" parent="."]
@@ -144,5 +146,12 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_t1u4b")
 }
+
+[node name="button_detector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="button_detector"]
+shape = SubResource("CircleShape2D_eh1wb")
 
 [connection signal="timeout" from="movement_timer" to="." method="_on_movement_timer_timeout"]

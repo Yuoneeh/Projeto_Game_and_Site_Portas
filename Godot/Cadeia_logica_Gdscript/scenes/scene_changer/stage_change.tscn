@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk8a7cmxxjdkp"]
+[gd_scene load_steps=13 format=3 uid="uid://dk8a7cmxxjdkp"]
 
 [ext_resource type="Script" uid="uid://c3ikdf1hpsbp2" path="res://resources/stage_change.gd" id="1_5m2a8"]
+[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="2_yuag3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dga24"]
 size = Vector2(20, 70)
@@ -13,6 +14,60 @@ radius = 19.105
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qxy0u"]
 radius = 19.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8ngv"]
+atlas = ExtResource("2_yuag3")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_586qg"]
+atlas = ExtResource("2_yuag3")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4uqg8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8ngv")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_586qg")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gtd4"]
+atlas = ExtResource("2_yuag3")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrv14"]
+atlas = ExtResource("2_yuag3")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q3kau"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gtd4")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrv14")
+}],
+"loop": true,
+"name": &"opened",
+"speed": 5.0
+}]
 
 [node name="stage_change" type="Node2D"]
 script = ExtResource("1_5m2a8")
@@ -42,6 +97,21 @@ collision_mask = 2
 [node name="stage_clear_right" type="CollisionShape2D" parent="stage_clear_right"]
 position = Vector2(683, 224)
 shape = SubResource("CircleShape2D_qxy0u")
+
+[node name="door_sprites" type="Node" parent="."]
+
+[node name="door_sprite_left" type="AnimatedSprite2D" parent="door_sprites"]
+unique_name_in_owner = true
+position = Vector2(28, 227)
+sprite_frames = SubResource("SpriteFrames_4uqg8")
+animation = &"closed"
+
+[node name="door_sprite_right" type="AnimatedSprite2D" parent="door_sprites"]
+unique_name_in_owner = true
+position = Vector2(671, 226)
+sprite_frames = SubResource("SpriteFrames_q3kau")
+animation = &"closed"
+flip_h = true
 
 [connection signal="body_entered" from="stage_clear_left" to="." method="_on_stage_clear_left_body_entered"]
 [connection signal="body_entered" from="stage_clear_right" to="." method="_on_stage_clear_right_body_entered"]

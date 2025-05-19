@@ -193,6 +193,7 @@ func inputs():
 		await tween.finished
 		moving = false
 		rotation = 0
+		Global.stage_cleared = true
 		
 	if Input.is_action_just_pressed("walk_up"):
 		emit_signal("move_up_arrow")

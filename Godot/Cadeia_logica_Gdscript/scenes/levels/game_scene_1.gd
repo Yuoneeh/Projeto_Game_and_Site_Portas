@@ -11,3 +11,7 @@ func _process(_delta: float) -> void:
 
 func _on_player_test_move_down() -> void:
 	pass # Replace with function body.
+
+
+func _on_button_button_up() -> void:
+	get_tree().reload_current_scene()

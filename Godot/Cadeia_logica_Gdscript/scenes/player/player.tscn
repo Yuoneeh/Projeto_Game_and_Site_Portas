@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ce7eo2f7bup5r"]
+[gd_scene load_steps=14 format=3 uid="uid://ce7eo2f7bup5r"]
 
 [ext_resource type="Script" uid="uid://n7iiydd4tyco" path="res://scenes/player/player.gd" id="1_gmlin"]
 [ext_resource type="Texture2D" uid="uid://f6fgxcx3j3qa" path="res://scenes/player/sprite_teste.png" id="2_lvxji"]
@@ -31,6 +31,8 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2ri5"]
 radius = 26.1725
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p47bc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
 radius = 47.0956
@@ -115,13 +117,16 @@ frame_progress = 0.428076
 shape = SubResource("CircleShape2D_p2ri5")
 
 [node name="collision_detector" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(0, 64)
 collide_with_areas = true
 
 [node name="interactables_ray" type="RayCast2D" parent="."]
 collision_mask = 2
 
-[node name="hand_flick" type="Sprite2D" parent="."]
+[node name="hand_pusher" type="Node2D" parent="."]
+
+[node name="hand_flick" type="Sprite2D" parent="hand_pusher"]
 unique_name_in_owner = true
 visible = false
 position = Vector2(12, -31)
@@ -130,7 +135,21 @@ texture = ExtResource("3_p47bc")
 flip_h = true
 flip_v = true
 
+[node name="hand_pusher_guide" type="Marker2D" parent="hand_pusher"]
+unique_name_in_owner = true
+position = Vector2(0, 36)
+
+[node name="arrow_push_collider" type="Area2D" parent="hand_pusher/hand_pusher_guide"]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hand_pusher/hand_pusher_guide/arrow_push_collider"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_p47bc")
+
 [node name="area_cubos" type="Area2D" parent="."]
+process_mode = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_cubos"]
 visible = false
@@ -141,9 +160,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_0owmy")
 }
 
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 0.09
+one_shot = true
+
 [connection signal="arrow_hide" from="." to="ui_arrows" method="_on_player_arrow_hide"]
 [connection signal="arrow_show" from="." to="ui_arrows" method="_on_player_arrow_show"]
 [connection signal="move_down_arrow" from="." to="ui_arrows" method="_on_player_move_down_arrow"]
 [connection signal="move_left_arrow" from="." to="ui_arrows" method="_on_player_move_left_arrow"]
 [connection signal="move_right_arrow" from="." to="ui_arrows" method="_on_player_move_right_arrow"]
 [connection signal="move_up_arrow" from="." to="ui_arrows" method="_on_player_move_up_arrow"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

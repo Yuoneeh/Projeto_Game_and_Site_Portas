@@ -12,6 +12,9 @@ signal arrow_hide
 signal arrow_show
 
 
+@onready var attack_timer = $attack_timer
+@onready var hand_pusher_area = %CollisionShape2D
+@onready var hand_pusher_guide = %hand_pusher_guide
 @onready var anim = %player_sprite
 @onready var ray = $collision_detector
 @onready var tile_interactions = $"../interaction_grid"
@@ -27,6 +30,7 @@ var moving = false
 
 func _ready() -> void:
 	anim.play("idle")
+	hand_pusher_area.disabled = true
 	flick_hand.visible = false
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
@@ -48,8 +52,9 @@ func _process(delta: float) -> void:
 			dir = Vector2.RIGHT
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.RIGHT:
+			attack_timer.start()
+			hand_pusher_area.disabled = false
 			flick_hand.visible = false
-			#move_right.emit()
 			dir = Vector2.RIGHT
 			ray_interactables.force_raycast_update()
 			socavel = false
@@ -65,8 +70,9 @@ func _process(delta: float) -> void:
 			dir = Vector2.DOWN
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.DOWN:
+			attack_timer.start()
+			hand_pusher_area.disabled = false
 			flick_hand.visible = false
-			#move_down.emit()
 			dir = Vector2.DOWN
 			ray_interactables.force_raycast_update()
 			socavel = false
@@ -83,9 +89,9 @@ func _process(delta: float) -> void:
 			ray_interactables.force_raycast_update()
 			
 		if Input.is_action_just_released("action_02") && dir == Vector2.UP:
+			attack_timer.start()
+			hand_pusher_area.disabled = false
 			flick_hand.visible = false
-			var cubos = get_tree().get_nodes_in_group("cubos")
-			#cubos
 			dir = Vector2.UP
 			ray_interactables.force_raycast_update()
 			socavel = false
@@ -101,6 +107,8 @@ func _process(delta: float) -> void:
 			dir = Vector2.LEFT
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.LEFT:
+			attack_timer.start()
+			hand_pusher_area.disabled = false
 			flick_hand.visible = false
 			dir = Vector2.LEFT
 			ray_interactables.force_raycast_update()
@@ -142,6 +150,8 @@ func move(dir):
 func push_stuff():
 	ray_interactables.target_position = dir * tile_size
 	ray_interactables.force_raycast_update()
+	hand_pusher_guide.position = dir * 32
+	
 	#if ray_interactables.is_colliding():
 	#	print("Há objetos interagiveis")
 		#socavel = true
@@ -195,3 +205,7 @@ func inputs():
 		push_stuff()
 		print("Down")
 		move(dir)
+
+
+func _on_attack_timer_timeout() -> void:
+	hand_pusher_area.disabled = true

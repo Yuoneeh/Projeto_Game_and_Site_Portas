@@ -23,4 +23,4 @@ Sobre a movimentação dos cubos ao analisar a dinamica entre a movimentação d
 
 Mecanica de empurrar cubos:
 
-	Esta mecanica vai ir de emitir um sinal para os atore para criar um objeto de colisão acima da mão onde o cubo no momento que detectar uma colisão sera mandado pela área oposta de onde ele veio
+	Esta mecanica vai ir de emitir um sinal para os atores para criar um objeto de colisão acima da mão onde o cubo no momento que detectar uma colisão sera mandado pela área oposta de onde ele veio

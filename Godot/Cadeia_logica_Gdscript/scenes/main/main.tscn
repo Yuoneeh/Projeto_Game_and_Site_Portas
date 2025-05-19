@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cv80gwji6qrki"]
+[gd_scene load_steps=16 format=4 uid="uid://cv80gwji6qrki"]
 
 [ext_resource type="Script" uid="uid://cs48qtbdf02mn" path="res://scenes/levels/game_scene_1.gd" id="1_hwp66"]
 [ext_resource type="Script" uid="uid://c0uwncy2wqv1o" path="res://scenes/parallax/parallax_background.gd" id="2_2xkjh"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="6_sv52t"]
 [ext_resource type="TileSet" uid="uid://03bbwqdht020" path="res://resources/teste.tres" id="7_7exfm"]
 [ext_resource type="PackedScene" uid="uid://cc13e3o40cveo" path="res://scenes/obstaculos/cube.tscn" id="8_qgoyv"]
-[ext_resource type="PackedScene" uid="uid://b5rp7io7i1238" path="res://scenes/obstaculos/cube_2.tscn" id="9_px1c8"]
 [ext_resource type="PackedScene" uid="uid://ce7eo2f7bup5r" path="res://scenes/player/player.tscn" id="10_xgklb"]
 [ext_resource type="PackedScene" uid="uid://dk8a7cmxxjdkp" path="res://scenes/scene_changer/stage_change.tscn" id="11_5wre2"]
 
@@ -144,6 +143,15 @@ theme_override_fonts/font = ExtResource("5_y56qp")
 theme_override_font_sizes/font_size = 101
 text = "1#"
 
+[node name="Button" type="Button" parent="Backgourd_UI"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 553.0
+offset_right = 144.0
+offset_bottom = 629.0
+text = "Reset
+"
+
 [node name="Game" type="Node2D" parent="."]
 position = Vector2(220, 100)
 
@@ -169,9 +177,6 @@ metadata/_edit_lock_ = true
 [node name="Cube" parent="Game" instance=ExtResource("8_qgoyv")]
 position = Vector2(223, 285)
 
-[node name="Cube2" parent="Game" instance=ExtResource("9_px1c8")]
-position = Vector2(479, 223)
-
 [node name="Sprite2D" type="Sprite2D" parent="Game"]
 z_index = 1
 position = Vector2(224, 163)
@@ -187,3 +192,17 @@ visibility_layer = 2
 position = Vector2(351, 160)
 
 [node name="stage_change" parent="Game" instance=ExtResource("11_5wre2")]
+
+[node name="Cube2" parent="Game" instance=ExtResource("8_qgoyv")]
+position = Vector2(479, 287)
+
+[node name="Cube3" parent="Game" instance=ExtResource("8_qgoyv")]
+position = Vector2(479, 158)
+
+[node name="Cube4" parent="Game" instance=ExtResource("8_qgoyv")]
+position = Vector2(160, 94)
+
+[node name="Cube" parent="." instance=ExtResource("8_qgoyv")]
+position = Vector2(827, 257)
+
+[connection signal="button_up" from="Backgourd_UI/Button" to="." method="_on_button_button_up"]

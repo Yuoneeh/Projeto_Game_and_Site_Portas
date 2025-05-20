@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 		#Push Down
 		if Input.is_action_pressed("action_02") && dir == Vector2.DOWN:
 			emit_signal("zoom_in")
-			print("Quero empurrar este objeto")
+			#print("Quero empurrar este objeto")
 			flick_hand.position.x = 6.0
 			flick_hand.position.y = 43
 			flick_hand.rotation = 90
@@ -85,7 +85,7 @@ func _process(delta: float) -> void:
 		##Push UP
 		if Input.is_action_pressed("action_02") && dir == Vector2.UP:
 			emit_signal("zoom_in")
-			print("Quero empurrar este objeto")
+			#print("Quero empurrar este objeto")
 			flick_hand.position.x = 11.0
 			flick_hand.position.y = -31.0
 			flick_hand.rotation = 200
@@ -105,7 +105,7 @@ func _process(delta: float) -> void:
 			socavel = false
 		##Push LEFT
 		if Input.is_action_pressed("action_02") && dir == Vector2.LEFT:
-			print("Quero empurrar este objeto")
+			#print("Quero empurrar este objeto")
 			emit_signal("zoom_in")
 			flick_hand.position.x = -44.0
 			flick_hand.position.y = 4.0

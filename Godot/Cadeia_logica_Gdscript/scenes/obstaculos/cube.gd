@@ -106,15 +106,19 @@ func should_i_move():
 	if collision_arrow_down.is_colliding():
 		moveable_down = false
 		moveable = true
+		print("moveable_down =", moveable_down)
 	if collision_arrow_up.is_colliding():
 		moveable_up = false
 		moveable = true
+		print("moveable_up =", moveable_up)
 	if collission_arrow_left.is_colliding():
 		moveable_left = false
 		moveable = true
+		print("moveable_left =", moveable_left)
 	if collission_arrow_right.is_colliding():
 		moveable_right = false
 		moveable = true
+		print("moveable_right =", moveable_right)
 
 
 func should_i_move_no():

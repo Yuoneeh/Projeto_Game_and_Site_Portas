@@ -1,8 +1,8 @@
 extends Node2D
 
 func _ready() -> void:
-	Global.lvl = 3
-	print("Global Lvl = 3")
+	Global.lvl = 4
+	print("Global Lvl = 4")
 
 
 func _process(_delta: float) -> void:

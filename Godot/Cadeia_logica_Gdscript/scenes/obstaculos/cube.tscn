@@ -87,7 +87,6 @@ scale = Vector2(0.666957, 0.680329)
 texture = SubResource("AtlasTexture_fqpox")
 
 [node name="raycasts_colisões" type="Node2D" parent="."]
-visible = false
 
 [node name="RayCast2D_down" type="RayCast2D" parent="raycasts_colisões"]
 unique_name_in_owner = true
@@ -109,6 +108,7 @@ rotation = -1.5708
 collide_with_areas = true
 
 [node name="raycasts_push" type="Node2D" parent="."]
+visible = false
 
 [node name="RayCast2D_down_p" type="RayCast2D" parent="raycasts_push"]
 unique_name_in_owner = true

@@ -27,6 +27,8 @@ var tile_size = 64
 
 
 func _ready() -> void:
+	#position = position.snapped(Vector2.ONE * tile_size)
+	#position += Vector2.ONE * tile_size/2
 	moveable = true
 	moveable_down = true
 	moveable_right = true
@@ -103,12 +105,16 @@ func move_down():
 func should_i_move():
 	if collision_arrow_down.is_colliding():
 		moveable_down = false
+		moveable = true
 	if collision_arrow_up.is_colliding():
 		moveable_up = false
+		moveable = true
 	if collission_arrow_left.is_colliding():
 		moveable_left = false
+		moveable = true
 	if collission_arrow_right.is_colliding():
 		moveable_right = false
+		moveable = true
 
 
 func should_i_move_no():

@@ -36,9 +36,9 @@ func button_hover():
 		btn_levels.scale = Vector2(1,1)
 		
 	if btn_play.is_hovered():
-		btn_play.scale = Vector2(1.1,1.1)
+		btn_play.scale = Vector2(2.1,2.1)
 	else:
-		btn_play.scale = Vector2(1,1)
+		btn_play.scale = Vector2(2,2)
 
 
 func _on_btn_quit_pressed() -> void:
@@ -61,7 +61,7 @@ func _on_btn_play_pressed() -> void:
 	start_game()
 
 func start_game():
-	Global.change_scene(1)
+	Global.change_scene(0)
 
 
 func _on_btn_credits_pressed() -> void:
@@ -73,7 +73,7 @@ func _on_btn_credits_pressed() -> void:
 	#audio_timer.stop()
 	
 func open_website():
-	OS.shell_open("https://www.youtube.com/watch?v=EfO86PpBcDg")
+	OS.shell_open("https://github.com/Yuoneeh/Projeto_Game_and_Site_Portas")
 	print("loop")
 	#timeout_sfx.disconnect()
 	

@@ -129,7 +129,7 @@ collision_mask = 2
 
 [node name="hand_flick" type="Sprite2D" parent="hand_pusher"]
 unique_name_in_owner = true
-visible = false
+modulate = Color(0.0509804, 0.682353, 0.537255, 1)
 position = Vector2(12, -31)
 scale = Vector2(0.138683, 0.148611)
 texture = ExtResource("3_p47bc")

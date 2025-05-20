@@ -1,32 +1,32 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjvo8jfhh5tbc"]
+[gd_scene load_steps=15 format=3 uid="uid://cm15xxmiqec2"]
 
-[ext_resource type="Script" uid="uid://kmbxmnlgx16c" path="res://scenes/menus/main_menu.gd" id="1_o7l4w"]
-[ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="2_c6l8p"]
-[ext_resource type="Texture2D" uid="uid://3y1g07m35qr5" path="res://scenes/menus/UI_assets.png" id="3_jeb7r"]
-[ext_resource type="AudioStream" uid="uid://beqcvv7seks8g" path="res://scenes/menus/old_pc_click.wav" id="4_kruux"]
+[ext_resource type="Script" uid="uid://kmbxmnlgx16c" path="res://scenes/menus/main_menu.gd" id="1_w6vmj"]
+[ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="2_hcm5b"]
+[ext_resource type="Texture2D" uid="uid://3y1g07m35qr5" path="res://scenes/menus/UI_assets.png" id="3_4ahuf"]
+[ext_resource type="AudioStream" uid="uid://beqcvv7seks8g" path="res://scenes/menus/old_pc_click.wav" id="4_nfee2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3tmrh"]
-atlas = ExtResource("3_jeb7r")
-region = Rect2(41.75, 591.52, 646.14, 146.41)
+atlas = ExtResource("3_4ahuf")
+region = Rect2(54, 586, 628, 154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvwki"]
-atlas = ExtResource("3_jeb7r")
+atlas = ExtResource("3_4ahuf")
 region = Rect2(254.479, 264.493, 129.354, 50.9979)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2w1r8"]
-atlas = ExtResource("3_jeb7r")
+atlas = ExtResource("3_4ahuf")
 region = Rect2(248.735, 326.675, 143.56, 43.3228)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4q5n"]
-atlas = ExtResource("3_jeb7r")
+atlas = ExtResource("3_4ahuf")
 region = Rect2(240.93, 200.779, 161.285, 45.336)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m5x4w"]
-atlas = ExtResource("3_jeb7r")
+atlas = ExtResource("3_4ahuf")
 region = Rect2(530.722, 267.829, 96.4099, 47.008)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xkoo8"]
-atlas = ExtResource("3_jeb7r")
+atlas = ExtResource("3_4ahuf")
 region = Rect2(515.777, 217.87, 122.631, 29.3421)
 
 [sub_resource type="Animation" id="Animation_0mtrp"]
@@ -85,7 +85,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(254.92, 195), Vector2(254, 189.355), Vector2(254, 206.765), Vector2(254, 195)]
+"values": [Vector2(318, 195), Vector2(318, 189.355), Vector2(318, 206.765), Vector2(318, 195)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tpbep"]
@@ -96,7 +96,7 @@ _data = {
 }
 
 [node name="main_menu" type="Node2D"]
-script = ExtResource("1_o7l4w")
+script = ExtResource("1_w6vmj")
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 9.44)
@@ -118,18 +118,18 @@ color = Color(0.0980392, 0.0901961, 0.105882, 1)
 
 [node name="fundo" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_left = 255.0
-offset_top = 102.0
-offset_right = 895.0
-offset_bottom = 550.0
-texture = ExtResource("2_c6l8p")
+offset_left = 251.0
+offset_top = 7.0
+offset_right = 891.0
+offset_bottom = 455.0
+texture = ExtResource("2_hcm5b")
 
 [node name="logo" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_left = 318.0
-offset_top = 195.0
-offset_right = 964.0
-offset_bottom = 341.0
+offset_left = 263.0
+offset_top = 95.0
+offset_right = 891.0
+offset_bottom = 249.0
 texture = SubResource("AtlasTexture_3tmrh")
 
 [node name="Control" type="Control" parent="Control"]
@@ -139,29 +139,26 @@ offset_bottom = 40.0
 
 [node name="btn_play" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 438.0
-offset_top = 374.0
-offset_right = 567.0
-offset_bottom = 424.0
-scale = Vector2(2, 2)
+offset_left = 332.0
+offset_top = 273.0
+offset_right = 461.0
+offset_bottom = 323.0
 texture_normal = SubResource("AtlasTexture_cvwki")
 
 [node name="btn_levels" type="TextureButton" parent="Control"]
-visible = false
 layout_mode = 0
-offset_left = 506.0
-offset_top = 425.0
-offset_right = 649.0
-offset_bottom = 475.0
+offset_left = 509.0
+offset_top = 360.0
+offset_right = 652.0
+offset_bottom = 410.0
 texture_normal = SubResource("AtlasTexture_2w1r8")
 
 [node name="btn_options" type="TextureButton" parent="Control"]
-visible = false
 layout_mode = 0
-offset_left = 499.0
-offset_top = 483.0
-offset_right = 660.0
-offset_bottom = 533.0
+offset_left = 650.0
+offset_top = 280.0
+offset_right = 811.0
+offset_bottom = 330.0
 texture_normal = SubResource("AtlasTexture_q4q5n")
 
 [node name="btn_quit" type="TextureButton" parent="Control"]
@@ -194,7 +191,7 @@ libraries = {
 }
 
 [node name="OldPcClick" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_kruux")
+stream = ExtResource("4_nfee2")
 
 [node name="timer_sfx" type="Timer" parent="."]
 one_shot = true

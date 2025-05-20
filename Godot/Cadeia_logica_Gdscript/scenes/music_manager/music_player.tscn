@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhjcl6vuv2288"]
+[gd_scene load_steps=5 format=3 uid="uid://bhjcl6vuv2288"]
 
 [ext_resource type="Script" uid="uid://capud71tb8tti" path="res://scenes/music_manager/music_player.gd" id="1_acqsr"]
+[ext_resource type="AudioStream" uid="uid://48ijr1l7325k" path="res://assets/music/Lucas-Moraes-msc2-2025-05-19-20_34.ogg" id="2_igv8s"]
+[ext_resource type="AudioStream" uid="uid://brefw2nt5kx6y" path="res://assets/music/Lucas-Moraes-msc3-2025-05-19-20_35.ogg" id="3_hr5dg"]
+[ext_resource type="AudioStream" uid="uid://bnw440vuketmb" path="res://assets/music/Lucas-Moraes-msc4-2025-05-19-20_35.ogg" id="4_7f6fq"]
 
 [node name="music_player" type="Node2D"]
 script = ExtResource("1_acqsr")
 
 [node name="musica_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_igv8s")
 
 [node name="musica_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hr5dg")
 
 [node name="musica_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7f6fq")

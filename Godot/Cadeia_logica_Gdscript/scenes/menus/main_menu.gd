@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 	anim.play("logo")
 	button_hover()
 func ready():
+	MusicPlayer.musica_1.play()
 	anim.play("logo")
 func button_hover():
 	if btn_credits.is_hovered():

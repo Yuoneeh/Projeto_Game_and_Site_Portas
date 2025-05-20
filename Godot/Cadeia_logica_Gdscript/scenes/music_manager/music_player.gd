@@ -1,21 +1,46 @@
 extends Node2D
 
-@onready var musica_1: AudioStreamPlayer = $musica_1
-@onready var musica_2: AudioStreamPlayer = $musica_2
-@onready var musica_3: AudioStreamPlayer = $musica_3
+@onready var musica_1 = preload("res://assets/music/Lucas-Moraes-msc2-2025-05-19-20_34.ogg")
+@onready var musica_2 = preload("res://assets/music/Lucas-Moraes-msc3-2025-05-19-20_35.ogg")
+@onready var musica_3 = preload("res://assets/music/Lucas-Moraes-msc4-2025-05-19-20_35.ogg")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	musica_1.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#stage_songs()
 	pass
-
+	
 func play_song_1():
 	musica_1.play()
 
 
 func play_song_2():
+	if musica_2.is_playing() == true:
+		return
 	musica_2.play()
+	
+
+
+func play_song_3():
+	if musica_3.is_playing() == true:
+		return
+	musica_3.play()
+	
+func stop_all_music():
+	musica_3.stop()
+	musica_2.stop()
+	musica_1.stop()
+
+func stage_songs():
+	match(Global.lvl):
+		0:
+			play_song_1()
+		1:
+			play_song_1()
+		2:
+			play_song_2()
+		

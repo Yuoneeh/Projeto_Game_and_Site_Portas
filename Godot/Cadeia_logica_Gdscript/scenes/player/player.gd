@@ -1,5 +1,7 @@
 extends CharacterBody2D
 #Gilica
+signal zoom_in
+signal zoom_out
 signal move_right
 signal move_down
 signal move_up
@@ -42,6 +44,7 @@ func _process(delta: float) -> void:
 	if moving == false && socavel == true:
 		#Push Right
 		if Input.is_action_pressed("action_02") && dir == Vector2.RIGHT:
+			emit_signal("zoom_in")
 			flick_hand.flip_h = true
 			flick_hand.flip_v = false
 			flick_hand.position.x = 55.0
@@ -52,6 +55,7 @@ func _process(delta: float) -> void:
 			dir = Vector2.RIGHT
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.RIGHT:
+			emit_signal("zoom_out")
 			attack_timer.start()
 			hand_pusher_area.disabled = false
 			flick_hand.visible = false
@@ -60,6 +64,7 @@ func _process(delta: float) -> void:
 			socavel = false
 		#Push Down
 		if Input.is_action_pressed("action_02") && dir == Vector2.DOWN:
+			emit_signal("zoom_in")
 			print("Quero empurrar este objeto")
 			flick_hand.position.x = 6.0
 			flick_hand.position.y = 43
@@ -70,6 +75,7 @@ func _process(delta: float) -> void:
 			dir = Vector2.DOWN
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.DOWN:
+			emit_signal("zoom_out")
 			attack_timer.start()
 			hand_pusher_area.disabled = false
 			flick_hand.visible = false
@@ -78,6 +84,7 @@ func _process(delta: float) -> void:
 			socavel = false
 		##Push UP
 		if Input.is_action_pressed("action_02") && dir == Vector2.UP:
+			emit_signal("zoom_in")
 			print("Quero empurrar este objeto")
 			flick_hand.position.x = 11.0
 			flick_hand.position.y = -31.0
@@ -89,6 +96,7 @@ func _process(delta: float) -> void:
 			ray_interactables.force_raycast_update()
 			
 		if Input.is_action_just_released("action_02") && dir == Vector2.UP:
+			emit_signal("zoom_out")
 			attack_timer.start()
 			hand_pusher_area.disabled = false
 			flick_hand.visible = false
@@ -98,6 +106,7 @@ func _process(delta: float) -> void:
 		##Push LEFT
 		if Input.is_action_pressed("action_02") && dir == Vector2.LEFT:
 			print("Quero empurrar este objeto")
+			emit_signal("zoom_in")
 			flick_hand.position.x = -44.0
 			flick_hand.position.y = 4.0
 			flick_hand.rotation = 245
@@ -107,6 +116,7 @@ func _process(delta: float) -> void:
 			dir = Vector2.LEFT
 			ray_interactables.force_raycast_update()
 		if Input.is_action_just_released("action_02") && dir == Vector2.LEFT:
+			emit_signal("zoom_out")
 			attack_timer.start()
 			hand_pusher_area.disabled = false
 			flick_hand.visible = false
@@ -193,7 +203,7 @@ func inputs():
 		await tween.finished
 		moving = false
 		rotation = 0
-		Global.stage_cleared = true
+		#Global.stage_cleared = true
 		
 	if Input.is_action_just_pressed("walk_up"):
 		emit_signal("move_up_arrow")

@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dae6mxxk6sny1"]
+
+[ext_resource type="Script" uid="uid://1xyx0ridetwg" path="res://scenes/levels/starting_zone/prison_cell.gd" id="1_327d1"]
+[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="2_71kj4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qidk3"]
+atlas = ExtResource("2_71kj4")
+region = Rect2(576, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgrwo"]
+atlas = ExtResource("2_71kj4")
+region = Rect2(576, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6tso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qidk3")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgrwo")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvax4"]
+size = Vector2(63.3333, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ukn11"]
+radius = 55.0
+
+[node name="Prison_cell" type="StaticBody2D"]
+script = ExtResource("1_327d1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_f6tso")
+animation = &"closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.444405, 0)
+shape = SubResource("RectangleShape2D_tvax4")
+
+[node name="change_sprite" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="change_sprite"]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_ukn11")
+
+[connection signal="body_entered" from="change_sprite" to="." method="_on_change_sprite_body_entered"]
+[connection signal="body_exited" from="change_sprite" to="." method="_on_change_sprite_body_exited"]

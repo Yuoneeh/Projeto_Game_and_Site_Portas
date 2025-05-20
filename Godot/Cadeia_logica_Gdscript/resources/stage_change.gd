@@ -23,8 +23,8 @@ func _process(delta: float) -> void:
 	elif Global.stage_cleared == false:
 		right_gate.disabled = false
 		left_gate.disabled = false
-		anim_door_right.play("opened")
-		anim_door_left.play("open")
+		anim_door_right.play("closed")
+		anim_door_left.play("closed")
 func _on_stage_clear_left_body_entered(body: Node2D) -> void:
 	last_scene = Global.lvl - 1
 	Global.change_scene(last_scene)

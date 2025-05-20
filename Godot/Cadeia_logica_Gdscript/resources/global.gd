@@ -1,5 +1,6 @@
 extends Node
 
+var starting_level = preload("res://scenes/levels/starting_zone/starting_zone.tscn")
 var level1 = preload("res://scenes/levels/level_1.tscn")
 var level2 = preload("res://scenes/levels/level_2.tscn")
 var level3 = preload("res://scenes/levels/level_3.tscn")
@@ -11,6 +12,8 @@ func sayHi():
 
 func change_scene(lvl):
 	match lvl:
+		0:
+			get_tree().change_scene_to_packed(starting_level)
 		1:
 			get_tree().change_scene_to_packed(level1)
 		2:

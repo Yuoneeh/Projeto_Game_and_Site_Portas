@@ -8,15 +8,14 @@ extends Node2D
 func _ready() -> void:
 	musica_1.play()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#stage_songs()
 	pass
 	
-func play_song_1():
-	musica_1.play()
-
+func play_song_1(music: AudioStream, volume = 0.0):
+	pass
+	
 
 func play_song_2():
 	if musica_2.is_playing() == true:
@@ -36,11 +35,4 @@ func stop_all_music():
 	musica_1.stop()
 
 func stage_songs():
-	match(Global.lvl):
-		0:
-			play_song_1()
-		1:
-			play_song_1()
-		2:
-			play_song_2()
-		
+	pass

@@ -1,7 +1,7 @@
 Falta:
 	Estruturar + 11 Fases
-	Transição entre fases
-	Mecânica de outras portas que não a AND
+							Transição entre fases
+		Mecânica de outras portas que não a AND
 	Musicas e Efeitos sonoros
 		-Musicas
 		-Som empurrar

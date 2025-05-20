@@ -1,0 +1,14 @@
+Falta:
+	Estruturar + 11 Fases
+	Transição entre fases
+	Mecânica de outras portas que não a AND
+	Musicas e Efeitos sonoros
+		-Musicas
+		-Som empurrar
+		-Som colidir
+		-Som passar de fase
+		-Som apertar botão
+		-Som abrir porta
+	(se Sobrar tempo) Cutscene pro começo do jogo
+		-
+	Exportar

@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://resources/global.gd"
 SceneTransition="*res://scenes/scene_transition/scene_transition.tscn"
-MusicPlayer="*res://scenes/music_manager/music_player.gd"
+song_1="*res://scenes/music_player_2nd_try/music_player.tscn"
 
 [display]
 

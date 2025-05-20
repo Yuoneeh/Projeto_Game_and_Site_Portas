@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Lucas-Moraes-msc3-2025-05-19-20_35.ogg-906052
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

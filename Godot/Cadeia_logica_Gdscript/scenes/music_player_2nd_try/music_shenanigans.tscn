@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://beuaaouj27u6a"]
+
+[ext_resource type="Script" uid="uid://bi80s5kfl5bxf" path="res://scenes/music_player_2nd_try/music_shenanigans.gd" id="1_hih0q"]
+[ext_resource type="AudioStream" uid="uid://3yfh1ojcy01e" path="res://assets/music/song_1.ogg" id="2_mbws7"]
+[ext_resource type="AudioStream" uid="uid://brefw2nt5kx6y" path="res://assets/music/Lucas-Moraes-msc3-2025-05-19-20_35.ogg" id="3_7adaf"]
+[ext_resource type="AudioStream" uid="uid://bnw440vuketmb" path="res://assets/music/Lucas-Moraes-msc4-2025-05-19-20_35.ogg" id="4_6uge8"]
+
+[node name="music_shenanigans" type="Node2D"]
+script = ExtResource("1_hih0q")
+
+[node name="Music_player" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_mbws7")
+volume_db = -12.0
+autoplay = true
+
+[node name="Timer" type="Timer" parent="Music_player"]
+
+[node name="song_2" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_7adaf")
+volume_db = -10.0
+autoplay = true
+
+[node name="song_3" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_6uge8")
+volume_db = -10.0
+
+[connection signal="finished" from="Music_player" to="Music_player" method="_on_finished"]
+[connection signal="timeout" from="Music_player/Timer" to="Music_player" method="_on_timer_timeout"]

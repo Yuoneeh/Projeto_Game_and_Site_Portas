@@ -24,41 +24,42 @@ func sayHi():
 	print("Hiiiiiii")
 
 func change_scene(lvl):
+	
 	match lvl:
 		0:
-			get_tree().change_scene_to_packed(starting_level)
+			SceneTransition.change_scene(lvl)
 		1:
-			get_tree().change_scene_to_packed(level1)
+			SceneTransition.change_scene(lvl)
 		2:
-			get_tree().change_scene_to_packed(level2)
+			SceneTransition.change_scene(lvl)
 		3:
-			get_tree().change_scene_to_packed(level3)
+			SceneTransition.change_scene(lvl)
 		4:
-			get_tree().change_scene_to_packed(level4)
+			SceneTransition.change_scene(lvl)
 		5:
-			get_tree().change_scene_to_packed(level5)
+			SceneTransition.change_scene(lvl)
 		6:
-			get_tree().change_scene_to_packed(level6)
+			SceneTransition.change_scene(lvl)
 		7:
-			get_tree().change_scene_to_packed(level7)
+			SceneTransition.change_scene(lvl)
 		8:
-			get_tree().change_scene_to_packed(level8)
+			SceneTransition.change_scene(lvl)
 		9:
-			get_tree().change_scene_to_packed(level9)
+			SceneTransition.change_scene(lvl)
 		10:
-			get_tree().change_scene_to_packed(level10)
+			SceneTransition.change_scene(lvl)
 		11:
-			get_tree().change_scene_to_packed(level11)
+			SceneTransition.change_scene(lvl)
 		12:
-			get_tree().change_scene_to_packed(level12)
+			SceneTransition.change_scene(lvl)
 		13:
-			get_tree().change_scene_to_packed(level13)
+			SceneTransition.change_scene(lvl)
 		14:
-			get_tree().change_scene_to_packed(level14)
+			SceneTransition.change_scene(lvl)
 		15:
-			get_tree().change_scene_to_packed(level15)
+			SceneTransition.change_scene(lvl)
 		16:
-			get_tree().change_scene_to_packed(level16)
+			SceneTransition.change_scene(lvl)
 			
 func clear_stage():
 	stage_cleared = true

@@ -13,7 +13,10 @@ config_version=5
 config/name="Logic_gate_GDscript"
 run/main_scene="uid://bjvo8jfhh5tbc"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.372549, 0.352941, 0.419608, 1)
+boot_splash/show_image=false
+config/icon="uid://dkb3s3tncxktl"
+config/windows_native_icon="res://assets/cool_shi/sprite_teste.ico"
 
 [autoload]
 

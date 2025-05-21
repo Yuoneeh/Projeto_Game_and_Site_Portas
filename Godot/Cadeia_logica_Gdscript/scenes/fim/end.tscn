@@ -1,9 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhgq1n58qn2qk"]
+[gd_scene load_steps=14 format=3 uid="uid://bhgq1n58qn2qk"]
 
 [ext_resource type="Script" uid="uid://dimjh1dc1o4ss" path="res://scenes/levels/end.gd" id="1_n7d32"]
 [ext_resource type="Texture2D" uid="uid://ddhol4sg4iphv" path="res://assets/environment/game_background.png" id="2_ars1f"]
 [ext_resource type="FontFile" uid="uid://djfhtdcvbfmpi" path="res://assets/font/PixelifySans-VariableFont_wght.ttf" id="3_glg4o"]
 [ext_resource type="AudioStream" uid="uid://bytju2oyj5pj6" path="res://assets/sfx/crowd_small_chil_ec049202_9klCwI6.ogg" id="4_mepef"]
+[ext_resource type="AudioStream" uid="uid://by0c4bb1biur3" path="res://assets/sfx/parabains.ogg" id="5_glg4o"]
+[ext_resource type="AudioStream" uid="uid://smars48l0k2b" path="res://assets/sfx/parabains_2.ogg" id="6_mepef"]
+[ext_resource type="VideoStream" uid="uid://ct1ye4jc6qfyx" path="res://assets/cool_shi/Presentation1.ogv" id="7_mepef"]
+[ext_resource type="Texture2D" uid="uid://d04jh5p21qpkb" path="res://assets/cool_shi/itch-io-icon-2048x2048-i6hzclad.png" id="8_4xp18"]
+[ext_resource type="Texture2D" uid="uid://c34jh8revaudm" path="res://assets/environment/pointy_hand.png" id="9_jum6j"]
+[ext_resource type="Texture2D" uid="uid://44pw7j4o2up4" path="res://assets/cool_shi/itch_clicked.png" id="9_naoyk"]
+
+[sub_resource type="Animation" id="Animation_mepef"]
+resource_name = "dev"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VideoStreamPlayer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 24.9333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.137255)]
+}
+
+[sub_resource type="Animation" id="Animation_76afc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VideoStreamPlayer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4xp18"]
+_data = {
+&"RESET": SubResource("Animation_76afc"),
+&"dev": SubResource("Animation_mepef")
+}
 
 [node name="End" type="Node2D"]
 script = ExtResource("1_n7d32")
@@ -14,26 +57,78 @@ offset_bottom = 40.0
 texture = ExtResource("2_ars1f")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 251.0
-offset_top = 57.0
-offset_right = 902.0
-offset_bottom = 607.0
+offset_left = 193.0
+offset_top = 34.0
+offset_right = 982.0
+offset_bottom = 625.0
 theme_override_fonts/normal_font = ExtResource("3_glg4o")
 theme_override_font_sizes/bold_italics_font_size = 1
 theme_override_font_sizes/normal_font_size = 38
-text = "										FIM
+text = "											FIM
+								VOCE ESCAPOU!!!
 
 THANKS FOR PLAYING IF YOU GOT HERE TYPE A HELL YEAH IN THE ITCH.IO REVIEWS!
 
-PARABÉNS POR FINALIZAR ESTE COMPLICADINHO E BONITO JOGO DE PUZZLES
+PARABÉNS POR FINALIZAR ESTE JOGO DE PUZZLES ME SIGA NO ITCH.IO PARA MAIS PROJETOS COMO ESTE
+
+CASO TENHA GOSTADO DEIXE UM HELL YEAAAH
 
 "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_mepef")
+volume_db = -30.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 25.0
 autostart = true
 
+[node name="parabains_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_glg4o")
+volume_db = 10.0
+
+[node name="parabains_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_mepef")
+volume_db = 10.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 89.0
+offset_top = 36.0
+offset_right = 2009.0
+offset_bottom = 1116.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("7_mepef")
+autoplay = true
+loop = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4xp18")
+}
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 950.0
+offset_top = 24.0
+offset_right = 2998.0
+offset_bottom = 2072.0
+scale = Vector2(0.08, 0.08)
+texture_normal = ExtResource("8_4xp18")
+texture_pressed = ExtResource("9_naoyk")
+texture_hover = ExtResource("9_naoyk")
+
+[node name="PointyHand" type="Sprite2D" parent="."]
+position = Vector2(1170, 284)
+texture = ExtResource("9_jum6j")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

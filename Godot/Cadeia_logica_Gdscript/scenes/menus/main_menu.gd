@@ -78,3 +78,7 @@ func open_website():
 	print("loop")
 	#timeout_sfx.disconnect()
 	
+
+
+func _on_texture_button_pressed() -> void:
+	OS.shell_open("https://yuoneeh.itch.io")

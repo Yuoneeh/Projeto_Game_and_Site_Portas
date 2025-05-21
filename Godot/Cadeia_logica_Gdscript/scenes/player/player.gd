@@ -14,6 +14,8 @@ signal arrow_hide
 signal arrow_show
 
 
+@onready var sfx = $AudioStreamPlayer2D
+@onready var sfx_timer = $sfx_timer
 @onready var attack_timer = $attack_timer
 @onready var hand_pusher_area = %CollisionShape2D
 @onready var hand_pusher_guide = %hand_pusher_guide
@@ -174,6 +176,7 @@ func inputs():
 	if moving == !false:
 		return
 	if Input.is_action_just_pressed("walk_left"):
+		sfx_timer.start()
 		emit_signal("move_left_arrow")
 		moving = true
 		var tween = create_tween()
@@ -188,7 +191,9 @@ func inputs():
 		await tween.finished
 		moving = false
 		rotation = 0
+		socavel = true
 	if Input.is_action_just_pressed("walk_right"):
+		sfx_timer.start()
 		emit_signal("move_right_arrow")
 		moving = true
 		var tween = create_tween()
@@ -203,21 +208,29 @@ func inputs():
 		await tween.finished
 		moving = false
 		rotation = 0
+		socavel = true
 		#Global.stage_cleared = true
-		
 	if Input.is_action_just_pressed("walk_up"):
+		sfx_timer.start()
 		emit_signal("move_up_arrow")
 		dir = Vector2.UP
 		push_stuff()
 		print("Up")
 		move(dir)
+		socavel = true
 	if Input.is_action_just_pressed("walk_down"):
+		sfx_timer.start()
 		emit_signal("move_down_arrow")
 		dir = Vector2.DOWN
 		push_stuff()
 		print("Down")
 		move(dir)
+		socavel = true
 
 
 func _on_attack_timer_timeout() -> void:
 	hand_pusher_area.disabled = true
+
+
+func _on_sfx_timer_timeout() -> void:
+	sfx.play()

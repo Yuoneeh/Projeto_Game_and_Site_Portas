@@ -11,4 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 func play_song_1():
-	play()
+	self.play()
+
+func stop_song_1():
+	self.stop()

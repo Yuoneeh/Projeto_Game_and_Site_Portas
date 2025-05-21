@@ -7,14 +7,14 @@ signal timeout_sfx
 @onready var btn_credits = $Control/btn_credits
 @onready var btn_levels = $Control/btn_levels
 @onready var audio_timer = $timer_sfx
-
+@onready var song = $song
 
 func _process(delta: float) -> void:
 	anim.play("logo")
 	button_hover()
 func ready():
-	MusicPlayer.musica_1.play()
 	anim.play("logo")
+	MusicPlayer1.play_song_1()
 func button_hover():
 	if btn_credits.is_hovered():
 		btn_credits.scale = Vector2(1.1,1.1)
@@ -74,7 +74,7 @@ func _on_btn_credits_pressed() -> void:
 	#audio_timer.stop()
 	
 func open_website():
-	OS.shell_open("https://github.com/Yuoneeh/Projeto_Game_and_Site_Portas")
+	OS.shell_open("https://yuoneeh.github.io/Site_Logic_gate/index.html")
 	print("loop")
 	#timeout_sfx.disconnect()
 	

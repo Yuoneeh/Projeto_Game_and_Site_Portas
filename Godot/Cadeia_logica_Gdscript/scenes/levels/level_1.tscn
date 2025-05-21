@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bpxjguuvch1pq"]
+[gd_scene load_steps=20 format=4 uid="uid://bpxjguuvch1pq"]
 
 [ext_resource type="Script" uid="uid://cs48qtbdf02mn" path="res://scenes/levels/game_scene_1.gd" id="1_c48rb"]
 [ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="2_a1ltq"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://ce7eo2f7bup5r" path="res://scenes/player/player.tscn" id="11_3pvpt"]
 [ext_resource type="Script" uid="uid://dx4mbga0lsuf2" path="res://scenes/main/win_condition_1.gd" id="12_y31qd"]
 [ext_resource type="PackedScene" uid="uid://dk8a7cmxxjdkp" path="res://scenes/scene_changer/stage_change.tscn" id="13_v2ol1"]
+[ext_resource type="Script" uid="uid://c14e3h207jhtl" path="res://scenes/music_player_2nd_try/song_randomizer.gd" id="14_mm8aj"]
+[ext_resource type="Texture2D" uid="uid://c34jh8revaudm" path="res://assets/environment/pointy_hand.png" id="15_wtwp4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_th5th"]
 texture = ExtResource("6_iflja")
@@ -132,10 +134,10 @@ text = "1#"
 
 [node name="Button" type="Button" parent="Backgourd_UI"]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 553.0
-offset_right = 144.0
-offset_bottom = 629.0
+offset_left = 38.0
+offset_top = 519.0
+offset_right = 153.0
+offset_bottom = 595.0
 text = "Reset
 "
 
@@ -218,6 +220,24 @@ position = Vector2(251, 324)
 
 [node name="door_sprite_right" parent="stage_change/door_sprites" index="1"]
 position = Vector2(891, 324)
+
+[node name="song_randomizer" type="Node" parent="."]
+script = ExtResource("14_mm8aj")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 231.0
+offset_top = 547.0
+offset_right = 910.0
+offset_bottom = 584.0
+theme_override_fonts/font = ExtResource("4_tpu0w")
+theme_override_font_sizes/font_size = 30
+text = "Caso fique preso, aperte o botão de resetar!!!"
+
+[node name="PointyHand" type="Sprite2D" parent="."]
+position = Vector2(179, 606)
+rotation = -0.141495
+scale = Vector2(0.32568, 0.26488)
+texture = ExtResource("15_wtwp4")
 
 [connection signal="button_up" from="Backgourd_UI/Button" to="." method="_on_button_button_up"]
 [connection signal="pressed" from="Game/button" to="win_condition_1" method="_on_button_pressed"]

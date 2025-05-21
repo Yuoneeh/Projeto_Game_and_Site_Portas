@@ -130,15 +130,6 @@ theme_override_fonts/font = ExtResource("4_gruok")
 theme_override_font_sizes/font_size = 101
 text = "5#"
 
-[node name="Button" type="Button" parent="Backgourd_UI"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 553.0
-offset_right = 144.0
-offset_bottom = 629.0
-text = "Reset
-"
-
 [node name="Game" type="Node2D" parent="."]
 position = Vector2(220, 100)
 
@@ -237,7 +228,20 @@ position = Vector2(251, 324)
 [node name="door_sprite_right" parent="stage_change/door_sprites" index="1"]
 position = Vector2(891, 324)
 
-[connection signal="button_up" from="Backgourd_UI/Button" to="." method="_on_button_button_up"]
+[node name="filter_2" type="ColorRect" parent="."]
+top_level = true
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.133333, 0.341176, 0.309804, 0.2)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 552.0
+offset_right = 145.0
+offset_bottom = 628.0
+text = "Reset
+"
+
 [connection signal="pressed" from="Game/button" to="win_condition_5" method="_on_button_pressed"]
 [connection signal="unpressed" from="Game/button" to="win_condition_5" method="_on_button_unpressed"]
 [connection signal="pressed" from="Game/button2" to="win_condition_5" method="_on_button_2_pressed"]
@@ -248,5 +252,6 @@ position = Vector2(891, 324)
 [connection signal="unpressed" from="Game/button3" to="win_condition_5" method="_on_button_3_unpressed"]
 [connection signal="pressed" from="Game/button4" to="win_condition_5" method="_on_button_4_pressed"]
 [connection signal="unpressed" from="Game/button4" to="win_condition_5" method="_on_button_4_unpressed"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
 
 [editable path="stage_change"]

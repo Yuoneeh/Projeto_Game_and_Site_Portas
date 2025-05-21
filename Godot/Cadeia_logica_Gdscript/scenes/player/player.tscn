@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://ce7eo2f7bup5r"]
+[gd_scene load_steps=15 format=3 uid="uid://ce7eo2f7bup5r"]
 
 [ext_resource type="Script" uid="uid://n7iiydd4tyco" path="res://scenes/player/player.gd" id="1_gmlin"]
 [ext_resource type="Texture2D" uid="uid://f6fgxcx3j3qa" path="res://scenes/player/sprite_teste.png" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://dkb3s3tncxktl" path="res://scenes/player/sprite_teste2.png" id="3_lvxji"]
 [ext_resource type="Texture2D" uid="uid://buei374rla8hh" path="res://scenes/player/hand_flicking.png" id="3_p47bc"]
 [ext_resource type="PackedScene" uid="uid://ccmxx705kdsqj" path="res://scenes/ui_arrows/ui_arrows.tscn" id="5_p47bc"]
+[ext_resource type="AudioStream" uid="uid://byjyf4n8rmg7l" path="res://assets/sfx/click.ogg" id="6_75vfm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_50q57"]
 atlas = ExtResource("2_lvxji")
@@ -166,6 +167,18 @@ libraries = {
 wait_time = 0.09
 one_shot = true
 
+[node name="sfx_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_75vfm")
+volume_db = -10.0
+pitch_scale = 3.26
+attenuation = 14.42
+panning_strength = 3.0
+bus = &"sound_effects"
+
 [connection signal="arrow_hide" from="." to="ui_arrows" method="_on_player_arrow_hide"]
 [connection signal="arrow_show" from="." to="ui_arrows" method="_on_player_arrow_show"]
 [connection signal="move_down_arrow" from="." to="ui_arrows" method="_on_player_move_down_arrow"]
@@ -173,3 +186,4 @@ one_shot = true
 [connection signal="move_right_arrow" from="." to="ui_arrows" method="_on_player_move_right_arrow"]
 [connection signal="move_up_arrow" from="." to="ui_arrows" method="_on_player_move_up_arrow"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="sfx_timer" to="." method="_on_sfx_timer_timeout"]

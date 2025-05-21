@@ -13,6 +13,7 @@ process_mode = 3
 stream = ExtResource("2_mbws7")
 volume_db = -12.0
 autoplay = true
+bus = &"music"
 
 [node name="Timer" type="Timer" parent="Music_player"]
 

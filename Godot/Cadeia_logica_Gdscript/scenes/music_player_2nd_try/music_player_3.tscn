@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuxxqd0butpn3"]
+
+[ext_resource type="AudioStream" uid="uid://bnw440vuketmb" path="res://assets/music/Lucas-Moraes-msc4-2025-05-19-20_35.ogg" id="1_73gb1"]
+[ext_resource type="Script" uid="uid://p2hgxfhvmgi0" path="res://scenes/music_player_2nd_try/music_player_3.gd" id="2_73gb1"]
+
+[node name="Music_player_3" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_73gb1")
+volume_db = -12.0
+bus = &"music"
+script = ExtResource("2_73gb1")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

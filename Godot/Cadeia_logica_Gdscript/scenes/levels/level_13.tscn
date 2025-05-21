@@ -1,0 +1,273 @@
+[gd_scene load_steps=18 format=4 uid="uid://cm8aenif4danr"]
+
+[ext_resource type="Script" uid="uid://d2cafdlhh7pm8" path="res://scenes/levels/game_scene_13.gd" id="1_yje5r"]
+[ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="2_0hwde"]
+[ext_resource type="Texture2D" uid="uid://ddhol4sg4iphv" path="res://assets/environment/game_background.png" id="3_yudpf"]
+[ext_resource type="FontFile" uid="uid://djfhtdcvbfmpi" path="res://assets/font/PixelifySans-VariableFont_wght.ttf" id="4_f63os"]
+[ext_resource type="Script" uid="uid://c0uwncy2wqv1o" path="res://scenes/parallax/parallax_background.gd" id="5_6kbmn"]
+[ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="6_ivm0h"]
+[ext_resource type="TileSet" uid="uid://03bbwqdht020" path="res://resources/teste.tres" id="7_sdqae"]
+[ext_resource type="PackedScene" uid="uid://bh5t367sk4fs1" path="res://scenes/button/button_and.tscn" id="8_2kfw6"]
+[ext_resource type="PackedScene" uid="uid://cc13e3o40cveo" path="res://scenes/obstaculos/cube.tscn" id="9_k1t7b"]
+[ext_resource type="Script" uid="uid://buhcr2x456ms4" path="res://scenes/camera/camera_2d.gd" id="10_yjwdp"]
+[ext_resource type="PackedScene" uid="uid://ce7eo2f7bup5r" path="res://scenes/player/player.tscn" id="11_sk212"]
+[ext_resource type="Script" uid="uid://cjixkn0s0yrr6" path="res://scenes/levels/win_condition_13.gd" id="12_0hwde"]
+[ext_resource type="PackedScene" uid="uid://dk8a7cmxxjdkp" path="res://scenes/scene_changer/stage_change.tscn" id="13_q3qkq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_th5th"]
+texture = ExtResource("6_ivm0h")
+texture_region_size = Vector2i(64, 64)
+6:1/0 = 0
+3:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+0:6/0 = 0
+2:6/0 = 0
+4:6/0 = 0
+0:8/0 = 0
+2:8/0 = 0
+4:8/0 = 0
+0:10/0 = 0
+2:10/0 = 0
+4:10/0 = 0
+2:4/0 = 0
+9:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8cswh"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_th5th")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7smn1"]
+texture = ExtResource("6_ivm0h")
+texture_region_size = Vector2i(64, 64)
+6:1/0 = 0
+3:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+0:6/0 = 0
+2:6/0 = 0
+4:6/0 = 0
+0:8/0 = 0
+2:8/0 = 0
+4:8/0 = 0
+0:10/0 = 0
+2:10/0 = 0
+4:10/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6cgey"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_7smn1")
+
+[node name="Main13" type="Node2D"]
+script = ExtResource("1_yje5r")
+
+[node name="Backgourd_UI" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 9.44)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1153.0
+offset_bottom = 648.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Backgourd_UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0980392, 0.0901961, 0.105882, 1)
+
+[node name="fundo" type="TextureRect" parent="Backgourd_UI"]
+visible = false
+layout_mode = 0
+offset_left = 255.0
+offset_top = 102.0
+offset_right = 895.0
+offset_bottom = 550.0
+texture = ExtResource("2_0hwde")
+
+[node name="TextureRect" type="TextureRect" parent="Backgourd_UI"]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 649.0
+texture = ExtResource("3_yudpf")
+
+[node name="Label" type="Label" parent="Backgourd_UI"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = -4.0
+offset_right = 880.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("4_f63os")
+theme_override_font_sizes/font_size = 101
+text = "PORTA NOR"
+
+[node name="stage_counter" type="Label" parent="Backgourd_UI"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -9.0
+offset_right = 572.0
+offset_bottom = 129.0
+theme_override_fonts/font = ExtResource("4_f63os")
+theme_override_font_sizes/font_size = 101
+text = "13#"
+
+[node name="Game" type="Node2D" parent="."]
+position = Vector2(220, 100)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Game"]
+follow_viewport_enabled = true
+scroll_offset = Vector2(10, 0)
+script = ExtResource("5_6kbmn")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+position = Vector2(-1039.51, 0)
+motion_mirroring = Vector2(1152, 649)
+
+[node name="Sprite2D" type="Sprite2D" parent="Game/ParallaxBackground/ParallaxLayer"]
+position = Vector2(576, 324.75)
+scale = Vector2(1, 1.00077)
+texture = ExtResource("3_yudpf")
+
+[node name="Visual_assets" type="TileMapLayer" parent="Game"]
+position = Vector2(-1, 0)
+tile_map_data = PackedByteArray("AAABAAEAAAACAAgAAAABAAIAAAACAAgAAAABAAMAAAACAAgAAAACAAEAAAACAAgAAAACAAIAAAACAAgAAAACAAMAAAACAAgAAAADAAEAAAACAAgAAAADAAMAAAACAAgAAAAEAAEAAAACAAgAAAAEAAIAAAACAAgAAAAEAAMAAAACAAgAAAAFAAEAAAACAAgAAAAFAAIAAAACAAgAAAAFAAMAAAACAAgAAAAGAAEAAAACAAgAAAAGAAIAAAACAAgAAAAGAAMAAAACAAgAAAAHAAEAAAACAAgAAAAHAAIAAAACAAgAAAAHAAMAAAACAAgAAAAHAAQAAAACAAgAAAAHAAUAAAACAAgAAAAIAAEAAAACAAgAAAAIAAIAAAACAAgAAAAIAAMAAAACAAgAAAAIAAQAAAACAAgAAAAIAAUAAAACAAgAAAABAAAAAAACAAYAAAACAAAAAAACAAYAAAADAAAAAAACAAYAAAAEAAAAAAACAAYAAAAFAAAAAAACAAYAAAAGAAAAAAACAAYAAAAHAAAAAAACAAYAAAAIAAAAAAACAAYAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAYAAAAAAAEAAAAAAAgAAAAAAAQAAAAAAAgAAAAAAAUAAAAAAAgAAAABAAQAAAACAAgAAAABAAUAAAACAAgAAAACAAQAAAACAAgAAAACAAUAAAACAAgAAAADAAQAAAACAAgAAAADAAUAAAACAAgAAAAEAAQAAAACAAgAAAAEAAUAAAACAAgAAAAFAAQAAAACAAgAAAAFAAUAAAACAAgAAAAGAAQAAAACAAgAAAAGAAUAAAACAAgAAAAAAAYAAAAAAAoAAAABAAYAAAACAAoAAAACAAYAAAACAAoAAAADAAYAAAACAAoAAAAEAAYAAAACAAoAAAAFAAYAAAACAAoAAAAGAAYAAAACAAoAAAAHAAYAAAACAAoAAAAIAAYAAAACAAoAAAAKAAAAAAAEAAYAAAAKAAEAAAAEAAgAAAAKAAIAAAAEAAgAAAAKAAQAAAAEAAgAAAAKAAUAAAAEAAgAAAAKAAYAAAAEAAoAAAAJAAYAAAACAAoAAAAJAAAAAAACAAYAAAAJAAEAAAACAAgAAAAJAAIAAAACAAgAAAAJAAMAAAACAAgAAAAJAAQAAAACAAgAAAAJAAUAAAACAAgAAAADAAIAAAACAAgAAAD+/wMAAAAJAAYAAAD//wMAAAAJAAYAAAD//wQAAAAJAAYAAAD//wIAAAAJAAYAAAD+/wIAAAAJAAYAAAD9/wIAAAAJAAYAAAD9/wMAAAAJAAYAAAD8/wIAAAAJAAYAAAD8/wMAAAAJAAYAAAD9/wQAAAAJAAYAAAD+/wQAAAAJAAYAAAD8/wQAAAAJAAYAAAALAAIAAAAJAAYAAAALAAMAAAAJAAYAAAALAAQAAAAJAAYAAAAMAAQAAAAJAAYAAAAMAAMAAAAJAAYAAAAMAAIAAAAJAAYAAAANAAIAAAAJAAYAAAANAAMAAAAJAAYAAAANAAQAAAAJAAYAAAAOAAQAAAAJAAYAAAAOAAMAAAAJAAYAAAAOAAIAAAAJAAYAAAA=")
+tile_set = SubResource("TileSet_8cswh")
+rendering_quadrant_size = 32
+
+[node name="interactables" type="TileMapLayer" parent="Game"]
+visible = false
+tile_map_data = PackedByteArray("AAADAAIAAAADAAIAAAADAAQAAAADAAIAAAA=")
+tile_set = SubResource("TileSet_6cgey")
+
+[node name="interaction_grid" type="TileMapLayer" parent="Game"]
+visible = false
+modulate = Color(1, 1, 1, 0.611765)
+position = Vector2(65, 63.2496)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAADAAAAAAADAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAEAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAEAAAAFAAAAAAAFAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAD//wAAAAABAAAAAAD//wEAAAABAAAAAAD//wIAAAAAAAAAAAD//wMAAAABAAAAAAD//wQAAAABAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAP//AAABAAAAAAAHAP//AAABAAAAAAAGAP//AAABAAAAAAAFAP//AAABAAAAAAAEAP//AAABAAAAAAADAP//AAABAAAAAAACAP//AAABAAAAAAABAP//AAABAAAAAAAAAP//AAABAAAAAAD/////AAABAAAAAAAJAAAAAAABAAAAAAAJAAEAAAABAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAABAAAAAAAJAAQAAAABAAAAAAAJAP//AAABAAAAAAACAAAAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAEAAAAGAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAACAAEAAAACAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAD//wUAAAABAAAAAAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAACAAUAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAHAAUAAAABAAAAAAAIAAUAAAABAAAAAAAJAAUAAAABAAAAAAA=")
+tile_set = ExtResource("7_sdqae")
+metadata/_edit_lock_ = true
+
+[node name="button" parent="Game" instance=ExtResource("8_2kfw6")]
+position = Vector2(544, 232)
+
+[node name="button2" parent="Game" instance=ExtResource("8_2kfw6")]
+position = Vector2(478, 232)
+
+[node name="Cube" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(159, 222)
+
+[node name="Camera2D" type="Camera2D" parent="Game"]
+position = Vector2(356, 225)
+position_smoothing_speed = 1000.0
+editor_draw_screen = false
+editor_draw_limits = true
+script = ExtResource("10_yjwdp")
+
+[node name="Player" parent="Game" instance=ExtResource("11_sk212")]
+visibility_layer = 2
+position = Vector2(32, 168)
+
+[node name="button3" parent="Game" instance=ExtResource("8_2kfw6")]
+position = Vector2(543, 167)
+
+[node name="button4" parent="Game" instance=ExtResource("8_2kfw6")]
+position = Vector2(606, 293)
+
+[node name="Cube2" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(287, 350)
+
+[node name="Cube3" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(350, 96)
+
+[node name="Cube5" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(608, 94)
+
+[node name="Cube4" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(95, 95)
+
+[node name="Cube6" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(158, 349)
+
+[node name="Cube7" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(543, 154)
+
+[node name="Cube10" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(287, 223)
+
+[node name="Cube11" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(478, 219)
+
+[node name="Cube8" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(544, 285)
+
+[node name="Cube9" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(221, 160)
+
+[node name="Cube12" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(221, 287)
+
+[node name="Cube13" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(477, 158)
+
+[node name="Cube14" parent="Game" instance=ExtResource("9_k1t7b")]
+position = Vector2(480, 96)
+
+[node name="win_condition_13" type="Node" parent="."]
+script = ExtResource("12_0hwde")
+
+[node name="stage_change" parent="." instance=ExtResource("13_q3qkq")]
+position = Vector2(213, 106)
+
+[node name="door_sprite_left" parent="stage_change/door_sprites" index="0"]
+position = Vector2(251, 324)
+
+[node name="door_sprite_right" parent="stage_change/door_sprites" index="1"]
+position = Vector2(891, 324)
+
+[node name="filter_3" type="ColorRect" parent="."]
+top_level = true
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.516056, 0.138572, 0.275503, 0.109804)
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 552.0
+offset_right = 145.0
+offset_bottom = 628.0
+text = "Reset
+"
+
+[connection signal="pressed" from="Game/button" to="win_condition_13" method="_on_button_pressed"]
+[connection signal="unpressed" from="Game/button" to="win_condition_13" method="_on_button_unpressed"]
+[connection signal="pressed" from="Game/button2" to="win_condition_13" method="_on_button_2_pressed"]
+[connection signal="unpressed" from="Game/button2" to="win_condition_13" method="_on_button_2_unpressed"]
+[connection signal="zoom_in" from="Game/Player" to="Game/Camera2D" method="_on_player_zoom_in"]
+[connection signal="zoom_out" from="Game/Player" to="Game/Camera2D" method="_on_player_zoom_out"]
+[connection signal="pressed" from="Game/button3" to="win_condition_13" method="_on_button_3_pressed"]
+[connection signal="unpressed" from="Game/button3" to="win_condition_13" method="_on_button_3_unpressed"]
+[connection signal="pressed" from="Game/button4" to="win_condition_13" method="_on_button_4_pressed"]
+[connection signal="unpressed" from="Game/button4" to="win_condition_13" method="_on_button_4_unpressed"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+
+[editable path="stage_change"]

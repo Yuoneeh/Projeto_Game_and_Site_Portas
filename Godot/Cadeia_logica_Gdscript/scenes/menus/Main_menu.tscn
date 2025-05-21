@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjvo8jfhh5tbc"]
+[gd_scene load_steps=16 format=3 uid="uid://bjvo8jfhh5tbc"]
 
 [ext_resource type="Script" uid="uid://kmbxmnlgx16c" path="res://scenes/menus/main_menu.gd" id="1_o7l4w"]
 [ext_resource type="Texture2D" uid="uid://d3gq3i6scq67o" path="res://scenes/menus/Menu_background.png" id="2_c6l8p"]
 [ext_resource type="Texture2D" uid="uid://3y1g07m35qr5" path="res://scenes/menus/UI_assets.png" id="3_jeb7r"]
 [ext_resource type="AudioStream" uid="uid://beqcvv7seks8g" path="res://scenes/menus/old_pc_click.wav" id="4_kruux"]
+[ext_resource type="AudioStream" uid="uid://bnw440vuketmb" path="res://assets/music/Lucas-Moraes-msc4-2025-05-19-20_35.ogg" id="5_c6l8p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3tmrh"]
 atlas = ExtResource("3_jeb7r")
@@ -198,6 +199,10 @@ stream = ExtResource("4_kruux")
 
 [node name="timer_sfx" type="Timer" parent="."]
 one_shot = true
+
+[node name="song" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_c6l8p")
+volume_db = -10.0
 
 [connection signal="pressed" from="Control/btn_play" to="." method="_on_btn_play_pressed"]
 [connection signal="pressed" from="Control/btn_quit" to="." method="_on_btn_quit_pressed"]

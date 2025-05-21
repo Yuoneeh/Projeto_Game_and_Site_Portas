@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhgq1n58qn2qk"]
+
+[ext_resource type="Script" uid="uid://dimjh1dc1o4ss" path="res://scenes/levels/end.gd" id="1_n7d32"]
+[ext_resource type="Texture2D" uid="uid://ddhol4sg4iphv" path="res://assets/environment/game_background.png" id="2_ars1f"]
+[ext_resource type="FontFile" uid="uid://djfhtdcvbfmpi" path="res://assets/font/PixelifySans-VariableFont_wght.ttf" id="3_glg4o"]
+[ext_resource type="AudioStream" uid="uid://bytju2oyj5pj6" path="res://assets/sfx/crowd_small_chil_ec049202_9klCwI6.ogg" id="4_mepef"]
+
+[node name="End" type="Node2D"]
+script = ExtResource("1_n7d32")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ars1f")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 251.0
+offset_top = 57.0
+offset_right = 902.0
+offset_bottom = 607.0
+theme_override_fonts/normal_font = ExtResource("3_glg4o")
+theme_override_font_sizes/bold_italics_font_size = 1
+theme_override_font_sizes/normal_font_size = 38
+text = "										FIM
+
+THANKS FOR PLAYING IF YOU GOT HERE TYPE A HELL YEAH IN THE ITCH.IO REVIEWS!
+
+PARABÉNS POR FINALIZAR ESTE COMPLICADINHO E BONITO JOGO DE PUZZLES
+
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mepef")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

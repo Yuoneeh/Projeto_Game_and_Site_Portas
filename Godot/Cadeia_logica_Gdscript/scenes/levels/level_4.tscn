@@ -130,15 +130,6 @@ theme_override_fonts/font = ExtResource("4_pmra4")
 theme_override_font_sizes/font_size = 101
 text = "4#"
 
-[node name="Button" type="Button" parent="Backgourd_UI"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 553.0
-offset_right = 144.0
-offset_bottom = 629.0
-text = "Reset
-"
-
 [node name="Game" type="Node2D" parent="."]
 position = Vector2(220, 100)
 
@@ -231,12 +222,20 @@ position = Vector2(251, 324)
 [node name="door_sprite_right" parent="stage_change/door_sprites" index="1"]
 position = Vector2(891, 324)
 
-[connection signal="button_up" from="Backgourd_UI/Button" to="." method="_on_button_button_up"]
+[node name="Button" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 552.0
+offset_right = 145.0
+offset_bottom = 628.0
+text = "Reset
+"
+
 [connection signal="pressed" from="Game/button" to="win_condition_4" method="_on_button_pressed"]
 [connection signal="unpressed" from="Game/button" to="win_condition_4" method="_on_button_unpressed"]
 [connection signal="pressed" from="Game/button2" to="win_condition_4" method="_on_button_2_pressed"]
 [connection signal="unpressed" from="Game/button2" to="win_condition_4" method="_on_button_2_unpressed"]
 [connection signal="zoom_in" from="Game/Player" to="Game/Camera2D" method="_on_player_zoom_in"]
 [connection signal="zoom_out" from="Game/Player" to="Game/Camera2D" method="_on_player_zoom_out"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
 
 [editable path="stage_change"]

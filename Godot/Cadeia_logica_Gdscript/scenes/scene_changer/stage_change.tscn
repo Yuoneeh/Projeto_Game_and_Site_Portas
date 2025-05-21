@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dk8a7cmxxjdkp"]
+[gd_scene load_steps=14 format=3 uid="uid://dk8a7cmxxjdkp"]
 
 [ext_resource type="Script" uid="uid://c3ikdf1hpsbp2" path="res://resources/stage_change.gd" id="1_5m2a8"]
 [ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="2_yuag3"]
+[ext_resource type="AudioStream" uid="uid://bcinoxokjrbyp" path="res://assets/sfx/pickupCoin-_1_.ogg" id="3_j8ngv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dga24"]
 size = Vector2(20, 70)
@@ -113,5 +114,14 @@ sprite_frames = SubResource("SpriteFrames_q3kau")
 animation = &"closed"
 flip_h = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_j8ngv")
+volume_db = 4.782
+
+[node name="sfx_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="body_entered" from="stage_clear_left" to="." method="_on_stage_clear_left_body_entered"]
 [connection signal="body_entered" from="stage_clear_right" to="." method="_on_stage_clear_right_body_entered"]
+[connection signal="timeout" from="sfx_timer" to="." method="_on_sfx_timer_timeout"]

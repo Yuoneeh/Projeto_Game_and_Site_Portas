@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cc13e3o40cveo"]
+[gd_scene load_steps=10 format=3 uid="uid://cc13e3o40cveo"]
 
 [ext_resource type="Script" uid="uid://cio6wjckw08ao" path="res://scenes/obstaculos/cube.gd" id="1_fqpox"]
 [ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="1_wgndh"]
+[ext_resource type="AudioStream" uid="uid://df5cocbcnmkbe" path="res://assets/sfx/explosion.ogg" id="3_hws4f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jwrs"]
 size = Vector2(57.5, 57.5)
@@ -154,4 +155,13 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="button_detector"]
 shape = SubResource("CircleShape2D_eh1wb")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_hws4f")
+
+[node name="sfx_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="timeout" from="movement_timer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="sfx_timer" to="." method="_on_sfx_timer_timeout"]

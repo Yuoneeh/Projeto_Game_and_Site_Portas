@@ -5,10 +5,12 @@ var next_scene = Global.lvl + 1
 var last_scene = Global.lvl - 1
 @onready var anim_door_left =  %door_sprite_left
 @onready var anim_door_right = %door_sprite_right
-
+@onready var sfx = $AudioStreamPlayer2D
+@onready var timer_sfx = $sfx_timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	Global.stage_cleared = false
 	anim_door_right.play("closed")
 	anim_door_left.play("closed")
@@ -21,6 +23,7 @@ func _process(delta: float) -> void:
 		anim_door_right.play("opened")
 		anim_door_left.play("open")
 	elif Global.stage_cleared == false:
+		timer_sfx.start()
 		right_gate.disabled = false
 		left_gate.disabled = false
 		anim_door_right.play("closed")
@@ -34,5 +37,6 @@ func _on_stage_clear_right_body_entered(body: Node2D) -> void:
 	next_scene = Global.lvl + 1
 	Global.change_scene(next_scene)
 
-	
-	
+
+func _on_sfx_timer_timeout() -> void:
+	sfx.play()

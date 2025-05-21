@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready() -> void:
 	Global.lvl = 5
-	print("Global Lvl = 4")
+	print("Global Lvl = 5")
 
 
 func _process(_delta: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://gfd6vmok061i"]
+[gd_scene load_steps=50 format=4 uid="uid://gfd6vmok061i"]
 
 [ext_resource type="Texture2D" uid="uid://cr5joctx4ql6a" path="res://assets/environment/Tile_set1.png" id="1_42rnt"]
 [ext_resource type="Script" uid="uid://c0uwncy2wqv1o" path="res://scenes/parallax/parallax_background.gd" id="1_rj3jq"]
@@ -13,9 +13,15 @@
 [ext_resource type="PackedScene" uid="uid://ccmxx705kdsqj" path="res://scenes/ui_arrows/ui_arrows.tscn" id="8_xsdye"]
 [ext_resource type="Texture2D" uid="uid://f6fgxcx3j3qa" path="res://scenes/player/sprite_teste.png" id="9_hife4"]
 [ext_resource type="PackedScene" uid="uid://bh5t367sk4fs1" path="res://scenes/button/button_and.tscn" id="9_tvax4"]
+[ext_resource type="AudioStream" uid="uid://byjyf4n8rmg7l" path="res://assets/sfx/click.ogg" id="9_xsdye"]
 [ext_resource type="Texture2D" uid="uid://dkb3s3tncxktl" path="res://scenes/player/sprite_teste2.png" id="10_8on81"]
 [ext_resource type="PackedScene" uid="uid://cc13e3o40cveo" path="res://scenes/obstaculos/cube.tscn" id="10_twh45"]
 [ext_resource type="Texture2D" uid="uid://buei374rla8hh" path="res://scenes/player/hand_flicking.png" id="11_k14lq"]
+[ext_resource type="AudioStream" uid="uid://bcinoxokjrbyp" path="res://assets/sfx/pickupCoin-_1_.ogg" id="13_8on81"]
+[ext_resource type="AudioStream" uid="uid://df5cocbcnmkbe" path="res://assets/sfx/explosion.ogg" id="16_hife4"]
+[ext_resource type="Texture2D" uid="uid://cktvwyskyk74u" path="res://assets/environment/teclado-de-computador-zona-das-setas-6789367.png" id="18_ndl0h"]
+[ext_resource type="Texture2D" uid="uid://mejxf24ljxal" path="res://assets/environment/6103W5Deo4L._AC_UF894,1000_QL80_.jpg" id="19_1ivat"]
+[ext_resource type="Texture2D" uid="uid://dyushpxxs5ve" path="res://assets/environment/keyboard-button-e-computer-aqO1me9-600.jpg" id="22_eaj63"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_50q57"]
 atlas = ExtResource("9_hife4")
@@ -361,6 +367,18 @@ libraries = {
 wait_time = 0.09
 one_shot = true
 
+[node name="sfx_timer" type="Timer" parent="Player"]
+wait_time = 0.1
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("9_xsdye")
+volume_db = -10.0
+pitch_scale = 3.26
+attenuation = 14.42
+panning_strength = 3.0
+bus = &"sound_effects"
+
 [node name="game" type="Node2D" parent="."]
 position = Vector2(31.755, 30.78)
 
@@ -430,6 +448,14 @@ sprite_frames = SubResource("SpriteFrames_q3kau")
 animation = &"closed"
 flip_h = true
 
+[node name="sfx_timer" type="Timer" parent="game/stage_change"]
+wait_time = 0.1
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="game/stage_change"]
+stream = ExtResource("13_8on81")
+volume_db = 4.782
+
 [node name="button" parent="game" instance=ExtResource("9_tvax4")]
 position = Vector2(1023.27, 572.44)
 
@@ -456,6 +482,11 @@ shape = SubResource("CircleShape2D_tl44y")
 position = Vector2(-0.283302, -1.97787)
 shape = SubResource("RectangleShape2D_tvax4")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="game/cell_breakable"]
+stream = ExtResource("16_hife4")
+volume_db = 20.135
+pitch_scale = 1.06
+
 [node name="cell_breakable2" type="StaticBody2D" parent="game"]
 position = Vector2(125.245, 377.998)
 script = ExtResource("8_twh45")
@@ -478,6 +509,16 @@ shape = SubResource("RectangleShape2D_tvax4")
 
 [node name="Cube2" parent="game" instance=ExtResource("10_twh45")]
 position = Vector2(766.268, 439.44)
+
+[node name="Teclado-de-computador-zona-das-setas-6789367" type="Sprite2D" parent="game"]
+position = Vector2(476.245, 191.22)
+scale = Vector2(0.15, 0.11324)
+texture = ExtResource("18_ndl0h")
+
+[node name="6103w5Deo4l_AcUf894,1000Ql80" type="Sprite2D" parent="game"]
+position = Vector2(471.245, 284.22)
+scale = Vector2(0.21868, 0.102194)
+texture = ExtResource("19_1ivat")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(605.075, 401)
@@ -517,6 +558,40 @@ script = ExtResource("8_f6tso")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(95, 217)
 
+[node name="Control" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 123.0
+offset_right = 506.0
+offset_bottom = 181.0
+theme_override_fonts/font = ExtResource("6_rfhpe")
+theme_override_font_sizes/font_size = 47
+text = "ANDE COM AS SETINHAS ou WASD"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 616.0
+offset_right = 810.0
+offset_bottom = 763.0
+theme_override_fonts/font = ExtResource("6_rfhpe")
+theme_override_font_sizes/font_size = 39
+text = "SELECIONE UMA DIREÇÃO
+ E INTEREJA COM COISAS APERTANDO A TECLA 
+"
+
+[node name="Keyboard-button-e-computer-aqO1Me9-600" type="Sprite2D" parent="Control"]
+position = Vector2(898, 701)
+scale = Vector2(0.188333, 0.19)
+texture = ExtResource("22_eaj63")
+
 [connection signal="arrow_hide" from="Player" to="Player/ui_arrows" method="_on_player_arrow_hide"]
 [connection signal="arrow_show" from="Player" to="Player/ui_arrows" method="_on_player_arrow_show"]
 [connection signal="move_down_arrow" from="Player" to="Player/ui_arrows" method="_on_player_move_down_arrow"]
@@ -524,8 +599,10 @@ position = Vector2(95, 217)
 [connection signal="move_right_arrow" from="Player" to="Player/ui_arrows" method="_on_player_move_right_arrow"]
 [connection signal="move_up_arrow" from="Player" to="Player/ui_arrows" method="_on_player_move_up_arrow"]
 [connection signal="timeout" from="Player/attack_timer" to="Player" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Player/sfx_timer" to="Player" method="_on_sfx_timer_timeout"]
 [connection signal="body_entered" from="game/stage_change/stage_clear_left" to="game/stage_change" method="_on_stage_clear_left_body_entered"]
 [connection signal="body_entered" from="game/stage_change/stage_clear_right" to="game/stage_change" method="_on_stage_clear_right_body_entered"]
+[connection signal="timeout" from="game/stage_change/sfx_timer" to="game/stage_change" method="_on_sfx_timer_timeout"]
 [connection signal="pressed" from="game/button" to="Camera2D/win_condition_0" method="_on_button_pressed"]
 [connection signal="unpressed" from="game/button" to="Camera2D/win_condition_0" method="_on_button_unpressed"]
 [connection signal="area_shape_entered" from="game/cell_breakable/cell" to="game/cell_breakable" method="_on_cell_area_shape_entered"]

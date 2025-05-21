@@ -11,7 +11,8 @@ var dir
 var animation_speed = 3
 var tile_size = 64
 
-
+@onready var sfx_timer = $sfx_timer
+@onready var sfx = %AudioStreamPlayer2D
 @onready var anim = %AnimationPlayer
 @onready var movement_timer = %movement_timer
 
@@ -46,35 +47,44 @@ func cube_movement():
 		move_right()
 		moveable = false
 		movement_timer.start()
+		sfx_timer.start()
 	if push_arrow_right.is_colliding() && moveable == true && moveable_left == true:
 		print("Cube:move_left")
 		dir = Vector2.LEFT
 		move_left()
 		moveable = false
 		movement_timer.start()
+		sfx_timer.start()
 	if push_arrow_down.is_colliding() && moveable == true && moveable_up == true:
 		print("Cube:move_up")
 		dir = Vector2.UP
 		move_up()
 		moveable = false
 		movement_timer.start()
+		sfx_timer.start()
 	if push_arrow_up.is_colliding() && moveable == true && moveable_down == true:
 		print("Cube:move_down")
 		dir = Vector2.DOWN
 		move_down()
 		moveable = false
 		movement_timer.start()
+		sfx_timer.start()
 	#Shake_animation
 	if push_arrow_left.is_colliding() && moveable == true && moveable_right == false:
 		anim.play("shake")
+		
 	if push_arrow_right.is_colliding() && moveable == true && moveable_left == false:
 		anim.play("shake")
+	
 	if push_arrow_down.is_colliding() && moveable == true && moveable_up == false:
 		anim.play("shake")
+		
 	if push_arrow_up.is_colliding() && moveable == true && moveable_down == false:
 		anim.play("shake")
+		
 
 func move_left():
+	#sfx.play()
 	var tween = create_tween()
 	tween.tween_property(self, "position",
 	position + dir * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
@@ -85,18 +95,21 @@ func move_left():
 
 
 func move_right():
+	#sfx.play()
 	var tween = create_tween()
 	tween.tween_property(self, "position",
 	position + dir * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
 
 
 func move_up():
+	#sfx.play()
 	var tween = create_tween()
 	tween.tween_property(self, "position",
 	position + dir * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
 
 
 func move_down():
+	#sfx.play()
 	var tween = create_tween()
 	tween.tween_property(self, "position",
 	position + dir * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_SINE)
@@ -133,3 +146,7 @@ func _on_movement_timer_timeout() -> void:
 	moveable_right = true
 	moveable_left = true
 	moveable_up = true
+
+
+func _on_sfx_timer_timeout() -> void:
+	sfx.play()
